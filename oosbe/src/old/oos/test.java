@@ -1,8 +1,8 @@
-package oos;
+package old.oos;
 
 import lejos.nxt.*;
-import cal.ColorSensorCal;
-import drive.Driver;
+import old.cal.ColorSensorCal;
+import old.drive.Driver;
 
 public class test {
   public static void testColorSensor() {
