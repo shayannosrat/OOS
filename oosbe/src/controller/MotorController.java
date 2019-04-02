@@ -8,6 +8,8 @@ package controller;
  */
 public interface MotorController extends BaseController {
 
+	public static final int MAX_SPEED = 1200;
+	
 	/**
 	 * Move the motor(s) forward
 	 */
