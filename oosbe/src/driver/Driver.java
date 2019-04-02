@@ -24,6 +24,9 @@ public class Driver {
 	 * Drives the robot on the line
 	 */
 	public void drive() {
-		//Not yet implemented
+		while(colorSensor.onLine()) {
+			motor.forward();
+		}
+		motor.stop();
 	}
 }
