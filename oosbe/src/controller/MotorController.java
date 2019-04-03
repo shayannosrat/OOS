@@ -1,5 +1,7 @@
 package controller;
 
+import calibration.Calibrator;
+
 /**
  * Controls the motor(s).
  * 
@@ -36,5 +38,5 @@ public interface MotorController extends BaseController {
 	 * Calibration is not needed for the motors
 	 */
 	@Override
-	default void calibrate() {}
+	default void calibrate(Calibrator calibrator) {}
 }

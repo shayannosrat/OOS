@@ -4,19 +4,11 @@
 package controller;
 
 /**
+ * 
  * @author Till Kobbe
  *
  */
 public class WallEColorSensorController implements ColorSensorController {
-
-	/* (non-Javadoc)
-	 * @see controller.BaseController#calibrate()
-	 */
-	@Override
-	public void calibrate() {
-		// TODO Auto-generated method stub
-
-	}
 
 	/* (non-Javadoc)
 	 * @see controller.ColorSensorController#onLine()

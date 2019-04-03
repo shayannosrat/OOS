@@ -7,9 +7,8 @@ public class Main {
 		 * 
 		 * 1. Neue Struktur, alte Funktion
 		 * 2. Kalibierungen laufen richtig
-		 * 3. Lambda auf Robotern
-		 * 4. Ultrasonic Sensor 
-		 * 5. evtl. schon fertigen Algo für Linienfahrt
+		 * 3. Ultrasonic Sensor 
+		 * 4. Algo für Linienfahrt
 		 */
 		
 	}

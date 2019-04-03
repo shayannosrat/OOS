@@ -21,13 +21,5 @@ public class WallEUltrasonicSensorController implements UltrasonicSensorControll
 			calibrationValue.add(this);
 		}
 	};
-	
-	/* (non-Javadoc)
-	 * @see controller.BaseController#calibrate()
-	 */
-	@Override
-	public void calibrate() {
-		calibrator.runCalibration();
-	}
 
 }

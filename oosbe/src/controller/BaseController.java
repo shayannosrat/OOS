@@ -1,5 +1,7 @@
 package controller;
 
+import calibration.Calibrator;
+
 /**
  * Interface for a basic sensor or motor controller.
  * 
@@ -11,5 +13,7 @@ public interface BaseController {
 	/**
 	 * Calibrates the controller
 	 */
-	void calibrate();
+	default void calibrate(Calibrator calibrator) {
+		calibrator.runCalibration();
+	}
 }
