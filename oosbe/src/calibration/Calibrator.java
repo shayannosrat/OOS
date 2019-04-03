@@ -14,5 +14,5 @@ public interface Calibrator {
 	/**
 	 * Method for running the calibration.
 	 */
-	void run();
+	void runCalibration();
 }
