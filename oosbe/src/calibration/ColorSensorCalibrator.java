@@ -14,6 +14,16 @@ import controller.WallEMotorController;
  * @author Till Kobbe
  *
  */
-public class ColorSensorCalibrator {
+public class ColorSensorCalibrator implements Calibrator {
 	private MotorController motor = WallEMotorController.getInstance();
+
+	/*
+	 * (non-Javadoc)
+	 * @see calibration.Calibrator#run()
+	 */
+	@Override
+	public void runCalibration() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -9,7 +9,7 @@ package controller;
 public interface BaseController {
 	
 	/**
-	 * Calibrate the controller if needed.
+	 * Calibrates the controller
 	 */
 	void calibrate();
 }
