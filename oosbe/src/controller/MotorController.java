@@ -11,24 +11,9 @@ public interface MotorController extends BaseController {
 	public static final int MAX_SPEED = 1200;
 	
 	/**
-	 * Move the motor(s) forward
+	 * Starts the motor(s)
 	 */
-	void forward();
-	
-	/**
-	 * Move the motor(s) backward
-	 */
-	void backward();
-	
-	/**
-	 * Performs a left turn
-	 */
-	void turnLeft();
-	
-	/**
-	 * Performs a right turn
-	 */
-	void turnRight();
+	void start();
 	
 	/**
 	 * Stops the motor(s)
@@ -39,7 +24,7 @@ public interface MotorController extends BaseController {
 	 * Sets the speed of the motor(s)
 	 * @param speed of the motor(s)
 	 */
-	void setSpeed(int speed);
+	void setSpeeds(int[] speed);
 	
 	/**
 	 * Calibration is not needed for the motors

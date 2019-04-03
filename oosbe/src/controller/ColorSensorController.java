@@ -15,4 +15,9 @@ public interface ColorSensorController extends BaseController {
 	 * @return 
 	 */
 	boolean onLine();
+	
+	/**
+	 * Returns the light value from the ColorSensor
+	 */
+	void getLightValue();
 }

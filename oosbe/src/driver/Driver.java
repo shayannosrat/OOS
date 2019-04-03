@@ -25,7 +25,7 @@ public class Driver {
 	 */
 	public void drive() {
 		while(colorSensor.onLine()) {
-			motor.forward();
+			motor.start();
 		}
 		motor.stop();
 	}

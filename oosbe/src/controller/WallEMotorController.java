@@ -11,15 +11,16 @@ import lejos.nxt.NXTRegulatedMotor;
 public class WallEMotorController implements MotorController {
 
 	protected final NXTRegulatedMotor left, right; 
-	protected int speed;
+	protected static WallEMotorController instance;
 	
 	/**
 	 * Constructor using the default motor ports
 	 */
-	public WallEMotorController() {
+	private WallEMotorController() {
 		left = Motor.B;
 		right = Motor.C;
-		speed = MAX_SPEED;
+		left.setSpeed(MAX_SPEED);
+		right.setSpeed(MAX_SPEED);
 	}
 	
 	/**
@@ -27,58 +28,25 @@ public class WallEMotorController implements MotorController {
 	 * @param left Left motor
 	 * @param right Right motor
 	 */
-	public WallEMotorController(NXTRegulatedMotor left, NXTRegulatedMotor right) {
+	private WallEMotorController(NXTRegulatedMotor left, NXTRegulatedMotor right) {
 		this.left = left;
 		this.right = right;
-		speed = MAX_SPEED;
+		left.setSpeed(MAX_SPEED);
+		right.setSpeed(MAX_SPEED);
 	}
 	
-	/* (non-Javadoc)
-	 * @see controller.MotorController#forward()
-	 */
-	@Override
-	public void forward() {
-		left.setSpeed(speed);
-		right.setSpeed(speed);
-		left.forward();
-		right.forward();
+	public static WallEMotorController getInstance() {
+		if(instance == null)
+			instance = new WallEMotorController();
+		return instance;
 	}
-
-	/* (non-Javadoc)
-	 * @see controller.MotorController#backward()
+	
+	/*
+	 * (non-Javadoc)
+	 * @see controller.MotorController#start()
 	 */
 	@Override
-	public void backward() {
-		left.setSpeed(speed);
-		right.setSpeed(speed);
-		left.backward();
-		right.backward();
-	}
-
-	/* (non-Javadoc)
-	 * @see controller.MotorController#turnLeft()
-	 */
-	@Override
-	public void turnLeft() {
-		if(speed > 0)
-			left.setSpeed(speed / 2);
-		else
-			right.setSpeed(MAX_SPEED);
-			
-		left.forward();
-		right.forward();
-	}
-
-	/* (non-Javadoc)
-	 * @see controller.MotorController#turnRight()
-	 */
-	@Override
-	public void turnRight() {
-		if(speed > 0)
-			right.setSpeed(speed / 2);
-		else
-			left.setSpeed(MAX_SPEED);
-		
+	public void start() {
 		left.forward();
 		right.forward();
 	}
@@ -93,11 +61,12 @@ public class WallEMotorController implements MotorController {
 	}
 
 	/* (non-Javadoc)
-	 * @see controller.MotorController#setSpeed(int)
+	 * @see controller.MotorController#setSpeeds(int[])
 	 */
 	@Override
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setSpeeds(int[] speeds) {
+		left.setSpeed(speeds[0]);
+		right.setSpeed(speeds[0]);
 	}
 
 }
