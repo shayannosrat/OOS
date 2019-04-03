@@ -31,9 +31,17 @@ public class WallEColorSensorController implements ColorSensorController {
 	 * @see controller.ColorSensorController#getLightValue()
 	 */
 	@Override
-	public void getLightValue() {
+	public int getLightValue() {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
+
+	@Override
+	public int getSetpointValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 
 }

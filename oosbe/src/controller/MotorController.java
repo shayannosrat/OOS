@@ -21,10 +21,16 @@ public interface MotorController extends BaseController {
 	void stop();
 	
 	/**
-	 * Sets the speed of the motor(s)
-	 * @param speed of the motor(s)
+	 * Sets the speed of the left motor
+	 * @param speed of the motor
 	 */
-	void setSpeeds(int[] speed);
+	void setLeftSpeed(int speed);
+	
+	/**
+	 * Sets the speed of the right motor
+	 * @param speed of the motor
+	 */
+	void setRightSpeed(int speed);
 	
 	/**
 	 * Calibration is not needed for the motors

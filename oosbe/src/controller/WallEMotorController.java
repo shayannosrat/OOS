@@ -61,12 +61,20 @@ public class WallEMotorController implements MotorController {
 	}
 
 	/* (non-Javadoc)
-	 * @see controller.MotorController#setSpeeds(int[])
+	 * @see controller.MotorController#setLeftSpeed(int)
 	 */
 	@Override
-	public void setSpeeds(int[] speeds) {
-		left.setSpeed(speeds[0]);
-		right.setSpeed(speeds[0]);
+	public void setLeftSpeed(int speed) {
+		left.setSpeed(speed);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see controller.MotorController#setRightSpeed(int)
+	 */
+	@Override
+	public void setRightSpeed(int speed) {
+		right.setSpeed(speed);
 	}
 
 }
