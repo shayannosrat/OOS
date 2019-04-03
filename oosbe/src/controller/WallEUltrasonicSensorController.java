@@ -1,7 +1,6 @@
-/**
- * 
- */
 package controller;
+
+import calibration.Calibrator;
 
 /**
  * Dummy for testing.
@@ -10,14 +9,20 @@ package controller;
  *
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
-
+	
+	private Calibrator calibrator = new Calibrator() {
+		@Override
+		public void run() {
+			System.out.println(this);
+		}
+	};
+	
 	/* (non-Javadoc)
 	 * @see controller.BaseController#calibrate()
 	 */
 	@Override
 	public void calibrate() {
-		// TODO Auto-generated method stub
-
+		calibrator.run();
 	}
 
 }
