@@ -13,7 +13,7 @@ public class WallEUltrasonicSensorController implements UltrasonicSensorControll
 	private Calibrator calibrator = new Calibrator() {
 		@Override
 		public void run() {
-			System.out.println(this);
+			System.out.println(this.toString());
 		}
 	};
 	
