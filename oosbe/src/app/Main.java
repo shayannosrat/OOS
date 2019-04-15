@@ -29,8 +29,7 @@ public class Main {
 		System.out.println("MotorController created");
 		WallEUltrasonicSensorController ultra = new WallEUltrasonicSensorController();
 		System.out.println("UltraSonicSensor created");
-		PController pcon = new PController(1);
-		
+		PController pcon = new PController(1000);		
 		WallEColorSensorCalibrator csensorCal = new WallEColorSensorCalibrator();
 		csensorCal.runCalibration();
 		System.out.println("Calibration completed");

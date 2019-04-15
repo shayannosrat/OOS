@@ -25,7 +25,7 @@ public class PController implements FeedbackController {
 	 */
 	@Override
 	public double getOutput(int actual, int setpoint) {
-		return ((setpoint - actual) * p)/(double) setpoint;
+		return ((setpoint - actual) * p)/((double) setpoint * p);
 	}
 
 }
