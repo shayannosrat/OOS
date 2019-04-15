@@ -3,6 +3,9 @@
  */
 package controller;
 
+import lejos.nxt.ColorSensor;
+import lejos.nxt.SensorPort;
+
 /**
  * 
  * @author Till Kobbe
@@ -11,15 +14,18 @@ package controller;
 public class WallEColorSensorController implements ColorSensorController {
 	
 	protected static WallEColorSensorController instance;
+	protected ColorSensor csensor;
+	protected int setpoint;
 	
-	public WallEColorSensorController getInstance() {
+	public static WallEColorSensorController getInstance() {
 			if(instance == null)
 				instance = new WallEColorSensorController();
 			return instance;
 	}
 	
 	private WallEColorSensorController() {
-		
+		csensor = new ColorSensor(SensorPort.S4);
+		csensor.setFloodlight(true);
 	}
 	
 	/* (non-Javadoc)
@@ -36,16 +42,20 @@ public class WallEColorSensorController implements ColorSensorController {
 	 */
 	@Override
 	public int getLightValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return csensor.getNormalizedLightValue();
 	}
 
 	@Override
-	public int getSetpointValue() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setSetpointValue(int value) {
+		setpoint = value;
+		return;
 	}
 	
+	@Override
+	public int getSetpointValue() {
+		
+		return setpoint;
+	}
 	
 
 }

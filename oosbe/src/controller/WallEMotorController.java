@@ -33,6 +33,7 @@ public class WallEMotorController implements MotorController {
 		this.right = right;
 		left.setSpeed(MAX_SPEED);
 		right.setSpeed(MAX_SPEED);
+		
 	}
 	
 	public static WallEMotorController getInstance() {
@@ -46,9 +47,15 @@ public class WallEMotorController implements MotorController {
 	 * @see controller.MotorController#start()
 	 */
 	@Override
-	public void start() {
+	public void startForward() {
 		left.forward();
 		right.forward();
+	}
+	
+	@Override
+	public void startBackward() {
+		left.backward();
+		right.backward();
 	}
 
 	/* (non-Javadoc)
@@ -76,5 +83,21 @@ public class WallEMotorController implements MotorController {
 	public void setRightSpeed(int speed) {
 		right.setSpeed(speed);
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see controller.MotorController#rotate(int)
+	 */
+	@Override
+	public void rotate(int angle) {
+		right.rotateTo(angle);
+		left.rotateTo(90);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		right.rotateTo(-angle);
+	}
 }

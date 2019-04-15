@@ -26,4 +26,11 @@ public interface ColorSensorController extends BaseController {
 	 * @return
 	 */
 	int getSetpointValue();
+	
+	/**
+	 * Sets the setpoint value (value of gray) after calibration is done
+	 */
+	void setSetpointValue(int value);
 }
+
+

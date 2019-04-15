@@ -1,6 +1,7 @@
 package driver;
 
 import controller.*;
+import lejos.nxt.Button;
 
 /**
  * The main driver claas.
@@ -16,10 +17,11 @@ public class Driver {
 	
 	private FeedbackController			controller;
 	
-	public Driver(MotorController m, ColorSensorController c, UltrasonicSensorController u) {
+	public Driver(MotorController m, ColorSensorController c, UltrasonicSensorController u, FeedbackController con) {
 		this.motor = m;
 		this.colorSensor = c;
 		this.ultrasonicSensor = u;
+		this.controller = con;
 	}
 	
 	/**
@@ -27,7 +29,7 @@ public class Driver {
 	 */
 	public void driveOnLine() {
 		while(colorSensor.onLine()) {
-			motor.start();
+			motor.startForward();
 		}
 		motor.stop();
 	}
@@ -39,7 +41,11 @@ public class Driver {
 		double output;
 		int setpoint = colorSensor.getSetpointValue();
 		
-		motor.start();
+		System.out.println("Setpoint is " + setpoint);
+		
+		Button.waitForAnyPress();
+		
+		motor.startForward();
 		while(true) {
 			output = controller.getOutput(colorSensor.getLightValue(), setpoint);
 			

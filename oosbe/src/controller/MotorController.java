@@ -13,12 +13,17 @@ public interface MotorController extends BaseController {
 	public static final int MAX_SPEED = 1200;
 	
 	/**
-	 * Starts the motor(s)
+	 * Starts the motor in the forward direction
 	 */
-	void start();
+	void startForward();
 	
 	/**
-	 * Stops the motor(s)
+	 * Starts the motor in the backward direction
+	 */
+	void startBackward();
+	
+	/**
+	 * Stops the motor
 	 */
 	void stop();
 	
@@ -33,6 +38,12 @@ public interface MotorController extends BaseController {
 	 * @param speed of the motor
 	 */
 	void setRightSpeed(int speed);
+	
+	/**
+	 * Rotates the NXT by the given angle
+	 * @param angle
+	 */
+	void rotate(int angle);
 	
 	/**
 	 * Calibration is not needed for the motors
