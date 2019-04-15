@@ -35,9 +35,10 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		motor.setLeftSpeed(0);
 		motor.startForward();
 		
-		for(int i=0;i<30;i++) {
+		
+		for(int i=0;i<7;i++) {
 			try {
-				Thread.sleep(50);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -45,15 +46,19 @@ public class WallEColorSensorCalibrator implements Calibrator {
 			colorlist.add(csensor.getLightValue());
 			System.out.println(colorlist.get(i));
 		}
+		Quicksort qs = new Quicksort(colorlist);
+		colorlist = qs.getsortedList();
+		for (int i = 0; i < colorlist.size()-1; i++) {
+            System.out.println(i + 1 + ": " + colorlist.get(i));
+        } 
 		motor.stop();
 		motor.startBackward();
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(1400);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		motor.stop();
-		csensor.setSetpointValue((colorlist.get(0)+colorlist.get(29))/2);
 	}
 }
