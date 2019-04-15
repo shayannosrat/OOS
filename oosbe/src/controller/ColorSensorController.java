@@ -26,4 +26,10 @@ public interface ColorSensorController extends BaseController {
 	 * @return
 	 */
 	int getSetpointValue();
+
+    /**
+     * Sets the setpoint value for the controller
+     * @param value
+     */
+	void setSetpointValue(int value);
 }
