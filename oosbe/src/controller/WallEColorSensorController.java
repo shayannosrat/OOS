@@ -9,7 +9,19 @@ package controller;
  *
  */
 public class WallEColorSensorController implements ColorSensorController {
-
+	
+	protected static WallEColorSensorController instance;
+	
+	public WallEColorSensorController getInstance() {
+			if(instance == null)
+				instance = new WallEColorSensorController();
+			return instance;
+	}
+	
+	private WallEColorSensorController() {
+		
+	}
+	
 	/* (non-Javadoc)
 	 * @see controller.ColorSensorController#onLine()
 	 */

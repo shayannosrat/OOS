@@ -1,5 +1,7 @@
 package app;
 
+import lejos.nxt.Button;
+
 public class Main {
 	public static void main(String[] args) {
 		/*
@@ -11,5 +13,7 @@ public class Main {
 		 * 4. Algo für Linienfahrt
 		 */
 		
+		System.out.println("Hello Wall-E");
+		Button.waitForAnyPress();
 	}
 }
