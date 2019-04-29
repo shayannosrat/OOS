@@ -1,8 +1,8 @@
 package commands;
 
 public class CommandInvoker {
-    private Command left, right, forward, backward;
-
+    private Command left, right, forward, backward, stop;
+    
     /*
      * Register Methods
      */
@@ -38,6 +38,14 @@ public class CommandInvoker {
     public void registerBackwardCommand(Command b) {
         this.backward = b;
     }
+    
+    /**
+     * Set the Command executed, when stop is called
+     * @param s Commad to execute
+     */
+    public void registerStopCommand(Command s) {
+        this.stop = s;
+    }
 
     /*
      * Invoke Methods
@@ -69,6 +77,13 @@ public class CommandInvoker {
      */
     public void backward() {
         backward.execute();
+    }
+    
+    /**
+     * Execute the backward Command
+     */
+    public void stop() {
+        stop.execute();
     }
 
 }
