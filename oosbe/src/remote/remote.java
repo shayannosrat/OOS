@@ -6,6 +6,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 import lejos.nxt.comm.BTConnection;
@@ -108,7 +109,7 @@ public class remote implements remoteMethod
     }
 /**
  * Estabish bluetooth connection to mission control
- */
+ *
    protected void connect()
     {
      BTConnection connection;
