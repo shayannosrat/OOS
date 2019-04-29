@@ -67,9 +67,13 @@ public class BlutoothReceiver implements remoteMethod {
     }
 
     protected void executeCommands() {
+        /*
         if(_code == remoteMethod.FORWARD) invoker.forward();
         else if(_code == remoteMethod.BACKWARD) invoker.backward();
         else if(_code == remoteMethod.LEFT) invoker.left();
         else if(_code == remoteMethod.RIGHT) invoker.right();
+        */
+
+        System.out.println(_code);
     }
 }
