@@ -33,7 +33,7 @@ public class Main {
 		WallEColorSensorCalibrator csensorCal = new WallEColorSensorCalibrator();
 		csensorCal.runCalibration();
 		System.out.println("Calibration completed");
-		
+		Button.waitForAnyPress();
 		Driver drive = new Driver(motor, csensor, ultra, pcon);
 		
 		drive.drive();
