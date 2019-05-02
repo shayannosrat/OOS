@@ -1,6 +1,6 @@
 package remote;
 
-import constants.RemoteCodes;
+import constants.RemoteCode;
 import lejos.nxt.LCD;
 import lejos.nxt.comm.BTConnection;
 import lejos.nxt.comm.Bluetooth;
@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author Till Kobbe
  */
-public class BluetoothReceiver extends RemoteCodes {
+public class BluetoothReceiver extends RemoteCode {
 
     protected static BluetoothReceiver instance;
 

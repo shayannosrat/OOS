@@ -2,7 +2,7 @@ package app;
 
 import constants.RobotState;
 import remote.BluetoothReceiver;
-import constants.RemoteCodes;
+import constants.RemoteCode;
 import strategy.Strategy;
 import strategy.StrategyException;
 
@@ -30,7 +30,7 @@ public class WallE implements Robot {
 
     @Override
     public int getState() {
-        if(bluetoothReceiver.readData() == RemoteCodes.STATE) {
+        if(bluetoothReceiver.readData() == RemoteCode.STATE) {
             this.state = RobotState.BLUETOOTH;
         }
         return this.state;

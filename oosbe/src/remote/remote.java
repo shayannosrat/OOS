@@ -6,7 +6,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import constants.RemoteCodes;
+import constants.RemoteCode;
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 import lejos.nxt.comm.BTConnection;
@@ -27,7 +27,7 @@ import lejos.util.PilotProps;
  * 
  * @author Roger Glassey
  */
-public class remote extends RemoteCodes {
+public class remote extends RemoteCode {
 
   /**
    * Constructor allocates the pilot object to be controlled
@@ -58,16 +58,16 @@ public class remote extends RemoteCodes {
   protected  void  executeCommand()
   {
   
-    if(_code == RemoteCodes.FORWARD) pilot.forward();
-    else if(_code == RemoteCodes.BACKWARD) pilot.backward();
-    else if(_code == RemoteCodes.TRAVEL) pilot.travel(_param1,_immediate);
-    else if(_code == RemoteCodes.ROTATE) pilot.rotate(_param1,_immediate);
-    else if(_code == RemoteCodes.STEER) pilot.steer(_param1,_param2,_immediate);
-    else if(_code == RemoteCodes.ARC) pilot.arc(_param1,_param2,_immediate);
-    else if(_code == RemoteCodes.SETTRAVELSPEED )pilot.setTravelSpeed(_param1);
-    else if(_code == RemoteCodes.SETROTATESPEED)pilot.setRotateSpeed(_param1);
-    else if(_code == RemoteCodes.RESET) pilot.reset();
-    else if(_code == RemoteCodes.STOP) pilot.stop();
+    if(_code == RemoteCode.FORWARD) pilot.forward();
+    else if(_code == RemoteCode.BACKWARD) pilot.backward();
+    else if(_code == RemoteCode.TRAVEL) pilot.travel(_param1,_immediate);
+    else if(_code == RemoteCode.ROTATE) pilot.rotate(_param1,_immediate);
+    else if(_code == RemoteCode.STEER) pilot.steer(_param1,_param2,_immediate);
+    else if(_code == RemoteCode.ARC) pilot.arc(_param1,_param2,_immediate);
+    else if(_code == RemoteCode.SETTRAVELSPEED )pilot.setTravelSpeed(_param1);
+    else if(_code == RemoteCode.SETROTATESPEED)pilot.setRotateSpeed(_param1);
+    else if(_code == RemoteCode.RESET) pilot.reset();
+    else if(_code == RemoteCode.STOP) pilot.stop();
      report();  // always send a response when the pilot method exits
 
   }
@@ -87,7 +87,7 @@ public class remote extends RemoteCodes {
       } catch (IOException e)
       {
       }
-      if(_code!= RemoteCodes.REPORT)
+      if(_code!= RemoteCode.REPORT)
         System.out.println("code "+_code + " "+_param1);
     }
 

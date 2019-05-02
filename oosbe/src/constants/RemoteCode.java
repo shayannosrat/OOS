@@ -5,7 +5,7 @@ package constants;
  *
  * @author Till Kobbe
  */
-public abstract class RemoteCodes
+public abstract class RemoteCode
 {
   public static final int FORWARD = 0;
   public static final int BACKWARD = 1;
