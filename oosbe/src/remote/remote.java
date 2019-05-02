@@ -27,8 +27,7 @@ import lejos.util.PilotProps;
  * 
  * @author Roger Glassey
  */
-public class remote implements RemoteCodes
-{
+public class remote extends RemoteCodes {
 
   /**
    * Constructor allocates the pilot object to be controlled

@@ -1,9 +1,14 @@
 package constants;
 
-public interface RobotState {
+/**
+ * Defines the state constants for the Robot
+ *
+ * @author Till Kobbe
+ */
+public abstract class RobotState {
 
-    public final int BLUETOOTH = 0;
-    public final int AUTONOM = 1;
-    public final int CALIBRATION = 2;
+    public static final int BLUETOOTH = 0;
+    public static final int AUTONOM = 1;
+    public static final int CALIBRATION = 2;
 
 }

@@ -3,6 +3,11 @@ package app;
 import strategy.Strategy;
 import strategy.StrategyException;
 
+/**
+ * Interface for the Robot - kind of a state machine
+ *
+ * @author Till Kobbe
+ */
 public interface Robot {
     /**
      * Set the current state of the robot to select the matching strategy

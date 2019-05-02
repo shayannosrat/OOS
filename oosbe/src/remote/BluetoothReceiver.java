@@ -10,8 +10,10 @@ import java.io.IOException;
 
 /**
  * This class forwards incoming bluetooth signals. It connects on creation
+ *
+ * @author Till Kobbe
  */
-public class BluetoothReceiver implements RemoteCodes {
+public class BluetoothReceiver extends RemoteCodes {
 
     protected static BluetoothReceiver instance;
 
