@@ -1,7 +1,8 @@
 package app;
 
+import constants.RobotState;
 import remote.BluetoothReceiver;
-import remote.RemoteCodes;
+import constants.RemoteCodes;
 import strategy.Strategy;
 import strategy.StrategyException;
 
@@ -19,7 +20,7 @@ public class WallE implements Robot {
         bluetoothReceiver = BluetoothReceiver.getInstance();
 
         //Set the default state of the robot to calibrate
-        this.state = 2;
+        this.state = RobotState.CALIBRATION;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class WallE implements Robot {
     @Override
     public int getState() {
         if(bluetoothReceiver.readData() == RemoteCodes.STATE) {
-            this.state = 0;
+            this.state = RobotState.BLUETOOTH;
         }
         return this.state;
     }

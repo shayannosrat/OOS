@@ -2,10 +2,11 @@ package strategy;
 
 import app.Robot;
 import commands.CommandInvoker;
+import constants.RobotState;
 import remote.BluetoothReceiver;
 
 public class BluetoothDriver implements Strategy {
-    private final int state = 0;
+    private final int state = RobotState.BLUETOOTH;
 
     private Robot robot;
 

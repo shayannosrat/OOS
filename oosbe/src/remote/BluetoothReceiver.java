@@ -1,5 +1,6 @@
 package remote;
 
+import constants.RemoteCodes;
 import lejos.nxt.LCD;
 import lejos.nxt.comm.BTConnection;
 import lejos.nxt.comm.Bluetooth;

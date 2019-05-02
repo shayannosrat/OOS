@@ -1,6 +1,7 @@
 package strategy;
 
 import app.Robot;
+import constants.RobotState;
 import controller.*;
 import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
@@ -21,7 +22,7 @@ public class AutonomDriver implements Strategy {
 	
 	private FeedbackController			controller;
 
-	private final int state = 1;
+	private final int state = RobotState.AUTONOM;
 
 	private Robot robot;
 	

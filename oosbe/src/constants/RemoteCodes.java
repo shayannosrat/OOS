@@ -1,4 +1,4 @@
-package remote;
+package constants;
 
 /**
  *Defines constants used by RemotePilotControl and RCPilot
