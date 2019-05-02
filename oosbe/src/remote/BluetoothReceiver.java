@@ -35,7 +35,7 @@ public class BluetoothReceiver extends RemoteCode {
     /**
      * Establish the bluetooth connection
      */
-    public void connect()
+    private void connect()
     {
         BTConnection connection;
         LCD.clear();

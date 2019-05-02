@@ -59,9 +59,13 @@ public class WallE implements Robot {
 
     @Override
     public void startStrategys() {
-        for(Strategy s : strategies) {
-            if(s.getState() == this.state)
-                s.start();
+        while(this.state != RobotState.EXIT_PROGRAM) {
+            for (Strategy s : strategies) {
+                if (s.getState() == this.state)
+                    s.start();
+            }
         }
+
+        System.exit(0);
     }
 }

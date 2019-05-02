@@ -28,7 +28,7 @@ public interface Robot {
     void registerStrategy(Strategy strategy) throws StrategyException;
 
     /**
-     * Unregister a Strategy
+     * Unregister a Strategy by looking for the state number of the given Strategy
      * @param strategy
      * @throws StrategyException if the strategy is not found
      */

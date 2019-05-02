@@ -1,13 +1,9 @@
 package app;
 
-import calibration.WallEColorSensorCalibrator;
 import controller.PController;
-import controller.WallEColorSensorController;
-import controller.WallEMotorController;
-import controller.WallEUltrasonicSensorController;
 import strategy.AutonomDriver;
-import lejos.nxt.Button;
 import strategy.BluetoothDriver;
+import strategy.StrategyException;
 
 
 public class Main {
@@ -24,5 +20,18 @@ public class Main {
 
 		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
+
+
+		// register strategies
+		try {
+			wallE.registerStrategy(bluetoothDriver);
+			wallE.registerStrategy(autonomDriver);
+		} catch(StrategyException e) {
+			System.out.println("Strategies couldn't be registered!");
+			System.exit(1);
+		}
+
+		// start the programm
+		wallE.startStrategys();
 	}
 }
