@@ -4,7 +4,7 @@ package remote;
  *Defines constants used by RemotePilotControl and RCPilot
  * @author roger
  */
-public interface remoteMethod
+public interface RemoteCodes
 {
   public final int FORWARD = 0;
   public final int BACKWARD = 1;
@@ -19,4 +19,5 @@ public interface remoteMethod
   public final int REPORT = 10;
   public final int LEFT = 11;
   public final int RIGHT = 12;
+  public final int STATE = 13;
 }

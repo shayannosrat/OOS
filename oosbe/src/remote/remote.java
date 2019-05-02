@@ -6,7 +6,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 import lejos.nxt.comm.BTConnection;
@@ -27,7 +26,7 @@ import lejos.util.PilotProps;
  * 
  * @author Roger Glassey
  */
-public class remote implements remoteMethod
+public class remote implements RemoteCodes
 {
 
   /**
@@ -59,16 +58,16 @@ public class remote implements remoteMethod
   protected  void  executeCommand()
   {
   
-    if(_code == remoteMethod.FORWARD) pilot.forward();
-    else if(_code == remoteMethod.BACKWARD) pilot.backward();
-    else if(_code == remoteMethod.TRAVEL) pilot.travel(_param1,_immediate);
-    else if(_code == remoteMethod.ROTATE) pilot.rotate(_param1,_immediate);
-    else if(_code == remoteMethod.STEER) pilot.steer(_param1,_param2,_immediate);
-    else if(_code == remoteMethod.ARC) pilot.arc(_param1,_param2,_immediate);
-    else if(_code == remoteMethod.SETTRAVELSPEED )pilot.setTravelSpeed(_param1);
-    else if(_code == remoteMethod.SETROTATESPEED)pilot.setRotateSpeed(_param1);
-    else if(_code == remoteMethod.RESET) pilot.reset();
-    else if(_code == remoteMethod.STOP) pilot.stop();
+    if(_code == RemoteCodes.FORWARD) pilot.forward();
+    else if(_code == RemoteCodes.BACKWARD) pilot.backward();
+    else if(_code == RemoteCodes.TRAVEL) pilot.travel(_param1,_immediate);
+    else if(_code == RemoteCodes.ROTATE) pilot.rotate(_param1,_immediate);
+    else if(_code == RemoteCodes.STEER) pilot.steer(_param1,_param2,_immediate);
+    else if(_code == RemoteCodes.ARC) pilot.arc(_param1,_param2,_immediate);
+    else if(_code == RemoteCodes.SETTRAVELSPEED )pilot.setTravelSpeed(_param1);
+    else if(_code == RemoteCodes.SETROTATESPEED)pilot.setRotateSpeed(_param1);
+    else if(_code == RemoteCodes.RESET) pilot.reset();
+    else if(_code == RemoteCodes.STOP) pilot.stop();
      report();  // always send a response when the pilot method exits
 
   }
@@ -88,7 +87,7 @@ public class remote implements remoteMethod
       } catch (IOException e)
       {
       }
-      if(_code!=remoteMethod.REPORT)
+      if(_code!= RemoteCodes.REPORT)
         System.out.println("code "+_code + " "+_param1);
     }
 
@@ -109,7 +108,7 @@ public class remote implements remoteMethod
     }
 /**
  * Estabish bluetooth connection to mission control
- *
+ */
    protected void connect()
     {
      BTConnection connection;
