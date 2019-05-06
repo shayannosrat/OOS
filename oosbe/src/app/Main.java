@@ -1,8 +1,10 @@
 package app;
 
+import controller.FeedbackController;
 import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
+import strategy.Calibration;
 import strategy.StrategyException;
 
 /**
@@ -26,24 +28,26 @@ public class Main {
 
 		// init the Controllers
 
-		PController con = new PController(1000);
+		FeedbackController con = new PController(1);
 
 		// init Strategys
 
-		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
+		Calibration calibration = new Calibration(wallE);
 
 
 		// register strategies
 		try {
-			wallE.registerStrategy(bluetoothDriver);
+			//wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
+			wallE.registerStrategy(calibration);
 		} catch(StrategyException e) {
 			System.out.println("Strategies couldn't be registered!");
 			System.exit(1);
 		}
 
 		// start the programm
-		wallE.startStrategys();
+		wallE.startStrategies();
 	}
 }

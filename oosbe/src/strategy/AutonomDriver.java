@@ -42,14 +42,15 @@ public class AutonomDriver implements Strategy {
 	@Override
 	public void start() {
 		motor.setLeftSpeed(motor.MAX_SPEED);
-		motor.setLeftSpeed(motor.MAX_SPEED);
+		motor.setRightSpeed(motor.MAX_SPEED);
 
-		while(robot.getState() == this.state) {
+		while(robot.getState() == this.state) {			
 			double output;
 			int setpoint = colorSensor.getSetpointValue();
 
 			motor.startForward();
 			output = controller.getOutput(colorSensor.getLightValue(), setpoint);
+			System.out.println("output: " + output);
 			int newSpeed;
 			if (output > 1 || output < -1) {
 				newSpeed = 0;
@@ -59,11 +60,10 @@ public class AutonomDriver implements Strategy {
 
 
 			if (output > 0) {
-				System.out.println("neuer Speed links: " + newSpeed);
+			
 				motor.setLeftSpeed(newSpeed);
 				motor.setRightSpeed(motor.MAX_SPEED);
 			} else {
-				System.out.println("neuer Speed rechts: " + newSpeed);
 				motor.setRightSpeed(newSpeed);
 				motor.setLeftSpeed(motor.MAX_SPEED);
 			}

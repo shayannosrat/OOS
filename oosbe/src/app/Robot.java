@@ -37,5 +37,5 @@ public interface Robot {
     /**
      * Starts the strategys depending on the current state of the robot
      */
-    void startStrategys();
+    void startStrategies();
 }
