@@ -30,8 +30,10 @@ public class WallE implements Robot {
 
     @Override
     public int getState() {
-        if(bluetoothReceiver.readData() == RemoteCode.STATE) {
+        if(bluetoothReceiver.readData() == RemoteCode.BLUETOOTH_STATE) {
             this.state = RobotState.BLUETOOTH;
+        } else if(bluetoothReceiver.readData() == RemoteCode.EXIT_STATE) {
+        	this.state = RobotState.EXIT_PROGRAM;
         }
         return this.state;
     }

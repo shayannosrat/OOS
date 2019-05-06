@@ -5,8 +5,20 @@ import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
 import strategy.StrategyException;
 
-
+/**
+ * Main Class to start the program.
+ * 
+ * @author Till Kobbe
+ *
+ */
 public class Main {
+	
+	/**
+	 * Main Method
+	 * Create all the needed resources and then starts the Robot
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// init WallE
 

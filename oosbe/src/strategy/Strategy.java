@@ -12,5 +12,9 @@ public interface Strategy {
      */
     void start();
 
+    /**
+     * Returns the state of the strategy
+     * @return the state
+     */
     int getState();
 }
