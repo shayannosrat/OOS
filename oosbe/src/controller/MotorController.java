@@ -44,10 +44,4 @@ public interface MotorController extends BaseController {
 	 * @param angle
 	 */
 	void rotate(int angle);
-	
-	/**
-	 * Calibration is not needed for the motors
-	 */
-	@Override
-	default void calibrate(Calibrator calibrator) {}
 }

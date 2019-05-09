@@ -2,7 +2,11 @@ package commands;
 
 public class CommandInvoker {
     private Command left, right, forward, backward, stop;
-    
+
+    public void executeNextCommand() {
+
+    }
+
     /*
      * Register Methods
      */
@@ -38,7 +42,7 @@ public class CommandInvoker {
     public void registerBackwardCommand(Command b) {
         this.backward = b;
     }
-    
+
     /**
      * Set the Command executed, when stop is called
      * @param s Commad to execute
@@ -54,31 +58,31 @@ public class CommandInvoker {
     /**
      * Execute the left Command
      */
-    public void left() {
+    private void left() {
         left.execute();
     }
 
     /**
      * Execute the right Command
      */
-    public void right() {
+    private void right() {
         right.execute();
     }
 
     /**
      * Execute the forward Command
      */
-    public void forward() {
+    private void forward() {
         forward.execute();
     }
 
     /**
      * Execute the backward Command
      */
-    public void backward() {
+    private void backward() {
         backward.execute();
     }
-    
+
     /**
      * Execute the backward Command
      */

@@ -9,11 +9,5 @@ import calibration.Calibrator;
  *
  */
 public interface BaseController {
-	
-	/**
-	 * Calibrates the controller
-	 */
-	default void calibrate(Calibrator calibrator) {
-		calibrator.runCalibration();
-	}
+
 }

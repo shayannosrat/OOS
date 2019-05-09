@@ -1,81 +1,70 @@
 package remote;
 
-import commands.CommandInvoker;
+import constants.RemoteCode;
 import lejos.nxt.LCD;
-import lejos.nxt.Sound;
 import lejos.nxt.comm.BTConnection;
 import lejos.nxt.comm.Bluetooth;
-import lejos.robotics.RegulatedMotor;
-import lejos.robotics.navigation.DifferentialPilot;
-import lejos.util.PilotProps;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
-public class BluetoothReceiver implements remoteMethod {
+/**
+ * This class forwards incoming bluetooth signals. It connects on creation
+ *
+ * @author Till Kobbe
+ */
+public class BluetoothReceiver extends RemoteCode {
 
-    protected int _code;
-    
+    protected static BluetoothReceiver instance;
+
+    private int data;
     protected float _param1;
     protected float _param2;
-    //protected boolean _immediate;
 
-    protected DataInputStream dataIn;
+    private DataInputStream dataIn;
 
-    protected DataOutputStream dataOut;
-
-    protected CommandInvoker invoker;
-
-    public void setInvoker(CommandInvoker invoker) {
-    	this.invoker = invoker;
-    }
-    
-    public void go() {
-    	connect();
-        while (true)
-        {
-        	System.out.println("reading");
-          readData();
-          executeCommands();
-//          report();
-        }
-    }
-    
-    protected void readData() {
-        try {
-            _code = dataIn.readInt();
-            _param1 = dataIn.readFloat();
-            _param2 = dataIn.readFloat();
-            //_immediate = dataIn.readBoolean();
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
+    private BluetoothReceiver() {
+        connect();
     }
 
-    protected  void connect()
+    public static BluetoothReceiver getInstance() {
+        if(instance == null)
+            instance = new BluetoothReceiver();
+
+        return instance;
+    }
+
+    /**
+     * Establish the bluetooth connection
+     */
+    private void connect()
     {
         BTConnection connection;
-        boolean fail = false;
         LCD.clear();
         LCD.drawString("Waiting", 0, 0);
         connection = Bluetooth.waitForConnection(); // this method is very patient.
+        dataIn = connection.openDataInputStream();
         LCD.clear();
-        if(!fail)
-        {
-            LCD.drawString("Connected", 0, 0);
-            dataIn = connection.openDataInputStream();
-            dataOut = connection.openDataOutputStream();
+    }
+
+    public int readData() {
+        try {
+            data = dataIn.readInt();
+            _param1 = dataIn.readFloat();
+            _param2 = dataIn.readFloat();
+        } catch(IOException e) {
+            System.out.println("Cannot read Integer Data from incoming Bluetooth Connection");
         }
+
+        return data;
     }
 
     protected  void executeCommands() {
-    	if(_code == remoteMethod.FORWARD) invoker.forward();
-    	else if(_code == remoteMethod.BACKWARD) invoker.backward();
-    	else if(_code == remoteMethod.LEFT) invoker.left();
-    	else if(_code == remoteMethod.RIGHT) invoker.right();
-    	else if(_code == remoteMethod.STOP) invoker.stop();
-    	
+        if(_code == remoteMethod.FORWARD) invoker.forward();
+        else if(_code == remoteMethod.BACKWARD) invoker.backward();
+        else if(_code == remoteMethod.LEFT) invoker.left();
+        else if(_code == remoteMethod.RIGHT) invoker.right();
+        else if(_code == remoteMethod.STOP) invoker.stop();
+
     }
 }

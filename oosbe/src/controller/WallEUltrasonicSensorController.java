@@ -11,15 +11,15 @@ import calibration.Calibrator;
  *
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
-	
-	ArrayList<Object> calibrationValue;
-	
-	private Calibrator calibrator = new Calibrator() {
-		@Override
-		public void runCalibration() {
-			System.out.println(this.toString());
-			calibrationValue.add(this);
-		}
-	};
+	protected static WallEUltrasonicSensorController instance;
+
+	public static WallEUltrasonicSensorController getInstance() {
+		if(instance == null)
+			instance = new WallEUltrasonicSensorController();
+
+		return instance;
+	}
+
+	private WallEUltrasonicSensorController() {}
 
 }

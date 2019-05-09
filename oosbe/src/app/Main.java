@@ -1,41 +1,53 @@
 package app;
 
-import calibration.WallEColorSensorCalibrator;
+import controller.FeedbackController;
 import controller.PController;
-import controller.WallEColorSensorController;
-import controller.WallEMotorController;
-import controller.WallEUltrasonicSensorController;
-import driver.Driver;
-import lejos.nxt.Button;
+import strategy.AutonomDriver;
+import strategy.BluetoothDriver;
+import strategy.Calibration;
+import strategy.StrategyException;
 
-
-
+/**
+ * Main Class to start the program.
+ * 
+ * @author Till Kobbe
+ *
+ */
 public class Main {
+	
+	/**
+	 * Main Method
+	 * Create all the needed resources and then starts the Robot
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		/*
-		 * Praktikum 2 Tests: 
-		 * 
-		 * 1. Neue Struktur, alte Funktion
-		 * 2. Kalibierungen laufen richtig
-		 * 3. Ultrasonic Sensor 
-		 * 4. Algo für Linienfahrt
-		 */
-		System.out.println("Hello Wall-E");
-		Button.waitForAnyPress();
-		
-		WallEColorSensorController csensor = WallEColorSensorController.getInstance();
-		System.out.println("ColorSensor created");
-		WallEMotorController motor = WallEMotorController.getInstance();
-		System.out.println("MotorController created");
-		WallEUltrasonicSensorController ultra = new WallEUltrasonicSensorController();
-		System.out.println("UltraSonicSensor created");
-		PController pcon = new PController(1000);		
-		WallEColorSensorCalibrator csensorCal = new WallEColorSensorCalibrator();
-		WallEColorSensorController.calibrate(csensorCal);
-		System.out.println("Calibration completed");
-		Button.waitForAnyPress();
-		Driver drive = new Driver(motor, csensor, ultra, pcon);
-		
-		drive.drive();
+		// init WallE
+
+		WallE wallE = new WallE();
+
+		// init the Controllers
+
+		FeedbackController con = new PController(1);
+
+		// init Strategys
+
+		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
+		Calibration calibration = new Calibration(wallE);
+
+
+		// register strategies
+		try {
+			//wallE.registerStrategy(bluetoothDriver);
+			wallE.registerStrategy(autonomDriver);
+			wallE.registerStrategy(calibration);
+		} catch(StrategyException e) {
+			System.out.println("Strategies couldn't be registered!");
+			System.exit(1);
+		}
+
+		// start the programm
+		wallE.startStrategies();
 	}
 }
