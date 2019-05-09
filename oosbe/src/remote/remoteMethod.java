@@ -17,4 +17,6 @@ public interface remoteMethod
   public final int SETTRAVELSPEED = 8;
   public final int SETROTATESPEED = 9;
   public final int REPORT = 10;
+  public final int LEFT = 11;
+  public final int RIGHT = 12;
 }
