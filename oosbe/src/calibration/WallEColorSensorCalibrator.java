@@ -36,9 +36,11 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		motor.startForward();
 		
 		
+
 		for(int i=0;i<100;i++) {
 			try {
 				Thread.sleep(14);
+
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,6 +50,7 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		}
 		Quicksort qs = new Quicksort(colorlist);
 		colorlist = qs.getsortedList();
+
 //		for (int i = 0; i < colorlist.size()-1; i++) {
 //            System.out.println(i + 1 + ": " + colorlist.get(i));
 //        } 
@@ -61,6 +64,7 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		average /= 20;
 		System.out.println("average: " + average);
 		
+
 		motor.stop();
 		motor.startBackward();
 		try {

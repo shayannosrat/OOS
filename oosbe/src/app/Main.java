@@ -31,7 +31,7 @@ public class Main {
 		System.out.println("UltraSonicSensor created");
 		PController pcon = new PController(1000);		
 		WallEColorSensorCalibrator csensorCal = new WallEColorSensorCalibrator();
-		csensorCal.runCalibration();
+		WallEColorSensorController.calibrate(csensorCal);
 		System.out.println("Calibration completed");
 		Button.waitForAnyPress();
 		Driver drive = new Driver(motor, csensor, ultra, pcon);
