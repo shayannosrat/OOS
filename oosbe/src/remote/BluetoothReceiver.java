@@ -18,6 +18,8 @@ public class BluetoothReceiver extends RemoteCode {
     protected static BluetoothReceiver instance;
 
     private int data;
+    protected float _param1;
+    protected float _param2;
 
     private DataInputStream dataIn;
 
@@ -48,10 +50,21 @@ public class BluetoothReceiver extends RemoteCode {
     public int readData() {
         try {
             data = dataIn.readInt();
+            _param1 = dataIn.readFloat();
+            _param2 = dataIn.readFloat();
         } catch(IOException e) {
             System.out.println("Cannot read Integer Data from incoming Bluetooth Connection");
         }
 
         return data;
+    }
+
+    protected  void executeCommands() {
+        if(_code == remoteMethod.FORWARD) invoker.forward();
+        else if(_code == remoteMethod.BACKWARD) invoker.backward();
+        else if(_code == remoteMethod.LEFT) invoker.left();
+        else if(_code == remoteMethod.RIGHT) invoker.right();
+        else if(_code == remoteMethod.STOP) invoker.stop();
+
     }
 }
