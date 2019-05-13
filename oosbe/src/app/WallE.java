@@ -20,7 +20,7 @@ public class WallE implements Robot {
         //bluetoothReceiver = BluetoothReceiver.getInstance();
 
         //Set the default state of the robot to calibrate
-        this.state = RobotState.AUTONOM;
+        this.state = RobotState.CALIBRATION;
         
         bluetoothReceiver = BluetoothReceiver.getInstance();
     }

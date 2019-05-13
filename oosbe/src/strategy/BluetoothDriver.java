@@ -10,8 +10,7 @@ public class BluetoothDriver implements Strategy {
     private final int state = RobotState.BLUETOOTH;
 
     private Robot robot;
-
-	@Override
+    
     private CommandInvoker invoker;
     private BluetoothReceiver bluetoothReceiver;
     
