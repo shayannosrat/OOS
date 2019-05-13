@@ -2,3 +2,6 @@
 /remote/
 /app/
 /commands/
+/calibration/
+/constants/
+/controller/

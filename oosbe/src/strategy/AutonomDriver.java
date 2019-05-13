@@ -2,7 +2,13 @@ package strategy;
 
 import app.Robot;
 import constants.RobotState;
-import controller.*;
+import controller.ColorSensorController;
+import controller.FeedbackController;
+import controller.MotorController;
+import controller.UltrasonicSensorController;
+import controller.WallEColorSensorController;
+import controller.WallEMotorController;
+import controller.WallEUltrasonicSensorController;
 import strategy.Strategy;
 
 /**
