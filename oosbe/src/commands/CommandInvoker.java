@@ -50,28 +50,28 @@ public class CommandInvoker {
     /**
      * Execute the left Command
      */
-    private void left() {
+    public void left() {
         left.execute();
     }
 
     /**
      * Execute the right Command
      */
-    private void right() {
+    public void right() {
         right.execute();
     }
 
     /**
      * Execute the forward Command
      */
-    private void forward() {
+    public void forward() {
         forward.execute();
     }
 
     /**
      * Execute the backward Command
      */
-    private void backward() {
+    public void backward() {
         backward.execute();
     }
 

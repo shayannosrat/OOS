@@ -41,16 +41,29 @@ public class AutonomDriver implements Strategy {
 
 	@Override
 	public void start() {
+		System.out.println("Starting Auto");
+		
 		motor.setLeftSpeed(motor.MAX_SPEED);
 		motor.setRightSpeed(motor.MAX_SPEED);
-
-		while(robot.getState() == this.state) {			
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		while(robot.getState() == this.state) {		
+			if(this.ultrasonicSensor.readData() <= 10) {
+				motor.stop();
+				continue;
+			}
 			double output;
 			int setpoint = colorSensor.getSetpointValue();
 
 			motor.startForward();
 			output = controller.getOutput(colorSensor.getLightValue(), setpoint);
-			System.out.println("output: " + output);
+			//System.out.println("output: " + output);
 			int newSpeed;
 			if (output > 1 || output < -1) {
 				newSpeed = 0;
@@ -68,5 +81,6 @@ public class AutonomDriver implements Strategy {
 				motor.setLeftSpeed(motor.MAX_SPEED);
 			}
 		}
+		motor.stop();
 	}
 }

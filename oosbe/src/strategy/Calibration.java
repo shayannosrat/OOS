@@ -33,6 +33,6 @@ public class Calibration implements Strategy {
 
     @Override
     public int getState() {
-            return this.state;
+    	return this.state;
     }
 }

@@ -1,8 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
-
-import calibration.Calibrator;
+import lejos.nxt.SensorPort;
+import lejos.nxt.UltrasonicSensor;
 
 /**
  * Dummy for testing and exaple of using an anonymous Calibrator class
@@ -12,6 +11,8 @@ import calibration.Calibrator;
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
 	protected static WallEUltrasonicSensorController instance;
+	
+	private UltrasonicSensor usensor;
 
 	public static WallEUltrasonicSensorController getInstance() {
 		if(instance == null)
@@ -20,6 +21,14 @@ public class WallEUltrasonicSensorController implements UltrasonicSensorControll
 		return instance;
 	}
 
-	private WallEUltrasonicSensorController() {}
+	private WallEUltrasonicSensorController() {
+		usensor = new UltrasonicSensor(SensorPort.S1);
+		usensor.continuous();
+	}
+
+	@Override
+	public int readData() {
+		return usensor.getDistance();
+	}
 
 }

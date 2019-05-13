@@ -2,6 +2,7 @@ package strategy;
 
 import app.Robot;
 import commands.CommandInvoker;
+import constants.RemoteCode;
 import constants.RobotState;
 import remote.BluetoothReceiver;
 
@@ -20,14 +21,27 @@ public class BluetoothDriver implements Strategy {
 
     @Override
     public void start() {
-        //TODO implementieren der Strategie
-
-        /*
-
-            Es sollen solange Daten aus dem BluetoothReceiver ausgelesen werden, bis sich der State des Robots geändert
-            hat. Die gelesenen Daten können dann an den CommandInvoker weitergeleitet werden, der die Commands ausführt
-
-         */
+    	int _code = bluetoothReceiver.readData();
+        while(_code != RemoteCode.BLUETOOTH_STATE) {
+        	switch(_code) {
+        	case RemoteCode.FORWARD: 
+        		System.out.println(RemoteCode.FORWARD);
+        		//invoker.forward();
+        		break;
+        	case RemoteCode.BACKWARD:
+        		System.out.println(RemoteCode.BACKWARD);
+        		//invoker.backward();
+        		break;
+        	case RemoteCode.LEFT:
+        		//invoker.left();
+        		break;
+        	case RemoteCode.RIGHT:
+        		//invoker.right();
+        		break;
+        	}
+        	_code = bluetoothReceiver.readData();
+        }
+        robot.setState(RobotState.AUTONOM);
     }
 
     @Override

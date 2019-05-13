@@ -9,5 +9,5 @@ package controller;
  *
  */
 public interface UltrasonicSensorController extends BaseController {
-
+	int readData();
 }

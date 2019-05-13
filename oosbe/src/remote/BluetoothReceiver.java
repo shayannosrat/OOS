@@ -6,6 +6,7 @@ import lejos.nxt.comm.BTConnection;
 import lejos.nxt.comm.Bluetooth;
 
 import java.io.DataInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 
 /**
@@ -46,12 +47,12 @@ public class BluetoothReceiver extends RemoteCode {
     }
 
     public int readData() {
-        try {
-            data = dataIn.readInt();
-        } catch(IOException e) {
-            System.out.println("Cannot read Integer Data from incoming Bluetooth Connection");
-        }
-
-        return data;
+    		data = RemoteCode.NO_DATA_READ;
+    		try {
+    			data = dataIn.readInt();
+      		} catch(IOException e) {
+    			return RemoteCode.NO_DATA_READ;
+    		}
+    		return data;
     }
 }
