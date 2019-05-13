@@ -65,7 +65,7 @@ public class BluetoothController
 
              @Override
              public void keyReleased(KeyEvent e) {
-            	 btSender.stop();
+            	// btSender.stop();
              }
  });
     	 

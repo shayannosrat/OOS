@@ -14,11 +14,6 @@ public class BluetoothSender {
 	
 	private NXTConnector con;
 	
-    
-    private boolean _isMoving;
-    private float _distance;
-    private float _angle;
-
 	private DataInputStream dataIn;
 	private DataOutputStream dataOut;
 	
@@ -52,7 +47,6 @@ public class BluetoothSender {
 	    try
 	    {
 	      dataOut.writeInt(code);
-	      //dataOut.writeBoolean(immediateReturn);
 	      dataOut.flush();
 	    } catch (IOException e)
 	    {
@@ -63,36 +57,43 @@ public class BluetoothSender {
 	
 	  public void forward()
 	  {
+		System.out.println("Wall-E: Forward");
 	    send(RemoteCode.FORWARD);
 	  }
 
 
 	  public void backward()
 	  {
+		System.out.println("Wall-E: Backward");
 	    send(RemoteCode.BACKWARD);
 	  }
 	  
 	  public void left()
 	  {
+		System.out.println("Wall-E: Left");
 	    send(RemoteCode.LEFT);
 	  }
 
 
 	  public void right()
 	  {
+		System.out.println("Wall-E: Right");
 	    send(RemoteCode.RIGHT);
 	  }
 	  
 	  public void stop() {
-		  send(RemoteCode.STOP);
+		System.out.println("Wall-E: Stop");
+		send(RemoteCode.STOP);
 	  }
 	  
 	  public void changeState() {
-		  send(RemoteCode.BLUETOOTH_STATE);
+		 System.out.println("Wall-E: Changing state");
+		 send(RemoteCode.BLUETOOTH_STATE);
 	  }
 	
 	  public void exitState() {
-		  send(RemoteCode.EXIT_STATE);
+		System.out.println("Wall-E: Exiting state");
+		send(RemoteCode.EXIT_STATE);
 	  }
 	
 	  
