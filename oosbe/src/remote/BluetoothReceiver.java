@@ -8,6 +8,7 @@ import lejos.nxt.comm.Bluetooth;
 import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * This class forwards incoming bluetooth signals. It connects on creation
@@ -20,7 +21,7 @@ public class BluetoothReceiver extends RemoteCode {
 
     private int data;
 
-    private DataInputStream dataIn;
+    private InputStream dataIn;
 
     private BluetoothReceiver() {
         connect();
@@ -42,16 +43,22 @@ public class BluetoothReceiver extends RemoteCode {
         LCD.clear();
         LCD.drawString("Waiting", 0, 0);
         connection = Bluetooth.waitForConnection(); // this method is very patient.
-        dataIn = connection.openDataInputStream();
+        dataIn = connection.openInputStream();
         LCD.clear();
     }
 
     public int readData() {
     		data = RemoteCode.NO_DATA_READ;
     		try {
-    			data = dataIn.readInt();
+    			if(dataIn.available() >= 4) {
+    				byte[] inBytes = new byte[4];
+    				dataIn.read(inBytes, 0, 4);
+    				
+    				data = (((inBytes[0] & 0xff) << 24) | ((inBytes[1] & 0xff) << 16) |
+    						  ((inBytes[2] & 0xff) << 8) | (inBytes[3] & 0xff));
+    			}
       		} catch(IOException e) {
-    			return RemoteCode.NO_DATA_READ;
+    			return data;
     		}
     		return data;
     }

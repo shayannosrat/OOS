@@ -1,7 +1,2 @@
-/app/
-/calibration/
-/commands/
-/constants/
-/controller/
-/remote/
 /strategy/
+/remote/

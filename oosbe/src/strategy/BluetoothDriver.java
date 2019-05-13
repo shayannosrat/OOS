@@ -7,19 +7,17 @@ import constants.RobotState;
 import remote.BluetoothReceiver;
 
 public class BluetoothDriver implements Strategy {
-    private final int state = RobotState.BLUETOOTH;
+	private final int state = RobotState.BLUETOOTH;
+	private Robot robot;
+	private CommandInvoker invoker;
+	private BluetoothReceiver bluetoothReceiver;
 
-    private Robot robot;
+	public BluetoothDriver(Robot robot) {
+		this.robot = robot;
+		bluetoothReceiver = BluetoothReceiver.getInstance();
+	}
 
-    private CommandInvoker invoker;
-    private BluetoothReceiver bluetoothReceiver;
-
-    public BluetoothDriver(Robot robot) {
-        this.robot = robot;
-        bluetoothReceiver = BluetoothReceiver.getInstance();
-    }
-
-    @Override
+	@Override
     public void start() {
     	int _code = bluetoothReceiver.readData();
         while(_code != RemoteCode.BLUETOOTH_STATE) {
@@ -38,6 +36,8 @@ public class BluetoothDriver implements Strategy {
         	case RemoteCode.RIGHT:
         		//invoker.right();
         		break;
+        		default:
+        			break;
         	}
         	_code = bluetoothReceiver.readData();
         }
