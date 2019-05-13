@@ -47,13 +47,11 @@ public class BluetoothSender {
 	    return connected;
 	}
 	
-	private void send(int code, float param1, float param2)
+	private void send(int code)
 	  {
 	    try
 	    {
 	      dataOut.writeInt(code);
-	      dataOut.writeFloat(param1);
-	      dataOut.writeFloat(param2);
 	      //dataOut.writeBoolean(immediateReturn);
 	      dataOut.flush();
 	    } catch (IOException e)
@@ -65,30 +63,37 @@ public class BluetoothSender {
 	
 	  public void forward()
 	  {
-	    send(remoteMethod.FORWARD,0,0);
+	    send(RemoteCode.FORWARD);
 	  }
 
 
 	  public void backward()
 	  {
-	    send(remoteMethod.BACKWARD,0,0);
+	    send(RemoteCode.BACKWARD);
 	  }
 	  
 	  public void left()
 	  {
-	    send(remoteMethod.LEFT,0,0);
+	    send(RemoteCode.LEFT);
 	  }
 
 
 	  public void right()
 	  {
-	    send(remoteMethod.RIGHT,0,0);
+	    send(RemoteCode.RIGHT);
 	  }
 	  
 	  public void stop() {
-		  send(remoteMethod.STOP, 0, 0);
+		  send(RemoteCode.STOP);
+	  }
+	  
+	  public void changeState() {
+		  send(RemoteCode.BLUETOOTH_STATE);
 	  }
 	
+	  public void exitState() {
+		  send(RemoteCode.EXIT_STATE);
+	  }
 	
 	  
 	

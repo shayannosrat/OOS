@@ -50,6 +50,13 @@ public class BluetoothController
                      case 68:    //D rechts
                     	 btSender.right();
                          break;
+                     case 32: //state ändern SPACE
+                    	 btSender.changeState();
+                    	 break;
+                     case 16: //state exit RIGHTSHIFT
+                    	 btSender.exitState();
+                    	 break;
+                    
                    
                      default:
                          break;
