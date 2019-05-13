@@ -12,23 +12,25 @@ import lejos.nxt.SensorPort;
  *
  */
 public class WallEColorSensorController implements ColorSensorController {
-	
+
 	protected static WallEColorSensorController instance;
 	protected ColorSensor csensor;
 	protected int setpoint;
-	
+
 	public static WallEColorSensorController getInstance() {
-			if(instance == null)
-				instance = new WallEColorSensorController();
-			return instance;
+		if (instance == null)
+			instance = new WallEColorSensorController();
+		return instance;
 	}
-	
+
 	private WallEColorSensorController() {
 		csensor = new ColorSensor(SensorPort.S4);
 		csensor.setFloodlight(true);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.ColorSensorController#onLine()
 	 */
 	@Override
@@ -37,7 +39,9 @@ public class WallEColorSensorController implements ColorSensorController {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.ColorSensorController#getLightValue()
 	 */
 	@Override
@@ -50,12 +54,11 @@ public class WallEColorSensorController implements ColorSensorController {
 		setpoint = value;
 		return;
 	}
-	
+
 	@Override
 	public int getSetpointValue() {
-		
+
 		return setpoint;
 	}
-	
 
 }

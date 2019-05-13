@@ -11,11 +11,11 @@ import lejos.nxt.UltrasonicSensor;
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
 	protected static WallEUltrasonicSensorController instance;
-	
+
 	private UltrasonicSensor usensor;
 
 	public static WallEUltrasonicSensorController getInstance() {
-		if(instance == null)
+		if (instance == null)
 			instance = new WallEUltrasonicSensorController();
 
 		return instance;

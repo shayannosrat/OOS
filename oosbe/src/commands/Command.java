@@ -7,9 +7,9 @@ package commands;
  */
 public interface Command {
 
-    /**
-     * Execute the command
-     */
-    void execute();
+	/**
+	 * Execute the command
+	 */
+	void execute();
 
 }

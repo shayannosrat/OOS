@@ -20,10 +20,9 @@ import strategy.StrategyException;
  *
  */
 public class Main {
-	
+
 	/**
-	 * Main Method
-	 * Create all the needed resources and then starts the Robot
+	 * Main Method Create all the needed resources and then starts the Robot
 	 * 
 	 * @param args
 	 */
@@ -39,7 +38,7 @@ public class Main {
 		invoker.registerLeftCommand(new LeftCommand());
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
-		
+
 		FeedbackController con = new PController(1);
 
 		// init Strategys
@@ -47,16 +46,15 @@ public class Main {
 		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
-		
 
 		bluetoothDriver.setInvoker(invoker);
-		
+
 		// register strategies
 		try {
 			wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
-		} catch(StrategyException e) {
+		} catch (StrategyException e) {
 			System.out.println("Strategies couldn't be registered! " + e.toString());
 			System.exit(1);
 		}

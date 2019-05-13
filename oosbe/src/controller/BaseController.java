@@ -1,7 +1,5 @@
 package controller;
 
-import calibration.Calibrator;
-
 /**
  * Interface for a basic sensor or motor controller.
  * 

@@ -15,17 +15,19 @@ public class PController implements FeedbackController {
 	 * The cooeficient of the controller
 	 */
 	private double p;
-	
+
 	public PController(double p) {
 		this.p = p;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.FeedbackController#getOutput(int, int)
 	 */
 	@Override
 	public double getOutput(int actual, int setpoint) {
-		return ((setpoint - actual) * this.p)/((double) setpoint * this.p);
+		return ((setpoint - actual) * this.p) / ((double) setpoint * this.p);
 	}
 
 }

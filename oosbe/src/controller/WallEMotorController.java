@@ -5,14 +5,15 @@ import lejos.nxt.NXTRegulatedMotor;
 
 /**
  * Controls the motors of Wall-E
+ * 
  * @author Till Kobbe
  *
  */
 public class WallEMotorController implements MotorController {
 
-	protected final NXTRegulatedMotor left, right; 
+	protected final NXTRegulatedMotor left, right;
 	protected static WallEMotorController instance;
-	
+
 	/**
 	 * Constructor using the default motor ports
 	 */
@@ -22,10 +23,11 @@ public class WallEMotorController implements MotorController {
 		left.setSpeed(MAX_SPEED);
 		right.setSpeed(MAX_SPEED);
 	}
-	
+
 	/**
 	 * Constructor using user specified motors
-	 * @param left Left motor
+	 * 
+	 * @param left  Left motor
 	 * @param right Right motor
 	 */
 	private WallEMotorController(NXTRegulatedMotor left, NXTRegulatedMotor right) {
@@ -33,17 +35,18 @@ public class WallEMotorController implements MotorController {
 		this.right = right;
 		left.setSpeed(MAX_SPEED);
 		right.setSpeed(MAX_SPEED);
-		
+
 	}
-	
+
 	public static WallEMotorController getInstance() {
-		if(instance == null)
+		if (instance == null)
 			instance = new WallEMotorController();
 		return instance;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see controller.MotorController#start()
 	 */
 	@Override
@@ -51,14 +54,16 @@ public class WallEMotorController implements MotorController {
 		left.forward();
 		right.forward();
 	}
-	
+
 	@Override
 	public void startBackward() {
 		left.backward();
 		right.backward();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.MotorController#stop()
 	 */
 	@Override
@@ -67,25 +72,29 @@ public class WallEMotorController implements MotorController {
 		right.stop();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.MotorController#setLeftSpeed(int)
 	 */
 	@Override
 	public void setLeftSpeed(int speed) {
 		left.setSpeed(speed);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see controller.MotorController#setRightSpeed(int)
 	 */
 	@Override
 	public void setRightSpeed(int speed) {
 		right.setSpeed(speed);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see controller.MotorController#rotate(int)
 	 */
 	@Override
