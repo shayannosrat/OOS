@@ -34,4 +34,16 @@ public interface ColorSensorController extends BaseController {
 	 * @param value
 	 */
 	void setSetpointValue(int value);
+	
+	/**
+	 * Sets the Offset Value of the controller
+	 * @param offset
+	 */
+	void setOffset(int offset);
+	
+	/**
+	 * Returns the offset
+	 * @return
+	 */
+	int getOffset();
 }
