@@ -16,7 +16,7 @@ public class WallEColorSensorController implements ColorSensorController {
 	protected static WallEColorSensorController instance;
 	protected ColorSensor csensor;
 	protected int setpoint;
-	protected int offset;
+	protected int offset = 0;
 
 	public static WallEColorSensorController getInstance() {
 		if (instance == null)
@@ -47,7 +47,7 @@ public class WallEColorSensorController implements ColorSensorController {
 	 */
 	@Override
 	public int getLightValue() {
-		return csensor.getNormalizedLightValue();
+		return csensor.getNormalizedLightValue() - this.offset;
 	}
 
 	@Override
@@ -58,16 +58,18 @@ public class WallEColorSensorController implements ColorSensorController {
 
 	@Override
 	public int getSetpointValue() {
-
-		return setpoint;
+		return setpoint - this.offset;
 	}
 
+	@Override
 	public void setOffset(int offset) {
-		this.offset = offset;
+		// TODO Auto-generated method stub
+		
 	}
-	
+
+	@Override
 	public int getOffset() {
 		return this.offset;
 	}
-
+	
 }

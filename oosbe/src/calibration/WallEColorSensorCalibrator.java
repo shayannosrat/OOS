@@ -60,6 +60,7 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		average /= 60;
 		System.out.println("average: " + average);
 		csensor.setSetpointValue(average);
+		csensor.setOffset(colorlist.get(0));
 		motor.stop();
 	}
 }
