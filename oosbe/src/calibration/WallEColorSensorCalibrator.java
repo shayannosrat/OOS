@@ -51,13 +51,13 @@ public class WallEColorSensorCalibrator implements Calibrator {
 //		            System.out.println(i + 1 + ": " + colorlist.get(i));
 //		        }
 		int average = 0;
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 5; i++) {
 			average += colorlist.get(i);
 		}
-		for (int i = 370; i < 400; i++) {
+		for (int i = 395; i < 400; i++) {
 			average += colorlist.get(i);
 		}
-		average /= 60;
+		average /= 10;
 		System.out.println("average: " + average);
 		csensor.setSetpointValue(average);
 		csensor.setOffset(colorlist.get(0));

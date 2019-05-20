@@ -40,7 +40,7 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
-		FeedbackController con = new PController(100000000);
+		FeedbackController con = new PController(0.01);
 
 		// init Strategys
 
