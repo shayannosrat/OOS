@@ -65,5 +65,9 @@ public class WallEColorSensorController implements ColorSensorController {
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
+	
+	public int getOffset() {
+		return this.offset;
+	}
 
 }

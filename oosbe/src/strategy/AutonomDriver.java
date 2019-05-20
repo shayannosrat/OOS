@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class AutonomDriver implements Strategy {
 	private MotorController motor;
-	private ColorSensorController colorSensor;
+	private WallEColorSensorController colorSensor;
 	private UltrasonicSensorController ultrasonicSensor;
 
 	private FeedbackController controller;
@@ -52,6 +52,8 @@ public class AutonomDriver implements Strategy {
 
 		motor.setLeftSpeed(MotorController.MAX_SPEED);
 		motor.setRightSpeed(MotorController.MAX_SPEED);
+		
+		this.controller.setOffset(colorSensor.getOffset());
 
 		try {
 			Thread.sleep(1000);
