@@ -63,7 +63,7 @@ public class WallEColorSensorController implements ColorSensorController {
 
 	@Override
 	public void setOffset(int offset) {
-		// TODO Auto-generated method stub
+		this.offset = offset;
 		
 	}
 
