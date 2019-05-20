@@ -11,6 +11,8 @@ import controller.WallEMotorController;
 import controller.WallEUltrasonicSensorController;
 import strategy.Strategy;
 
+import java.util.ArrayList;
+
 /**
  * The main driver claas. Controls the robot such as it stays on the line.
  * 
@@ -28,12 +30,15 @@ public class AutonomDriver implements Strategy {
 
 	private Robot robot;
 
+	private ArrayList<Integer> calValues;
+
 	public AutonomDriver(Robot r, FeedbackController con) {
 		this.motor = WallEMotorController.getInstance();
 		this.colorSensor = WallEColorSensorController.getInstance();
 		this.ultrasonicSensor = WallEUltrasonicSensorController.getInstance();
 		this.controller = con;
 		this.robot = r;
+		calValues = new ArrayList<>();
 	}
 
 	@Override
@@ -81,7 +86,21 @@ public class AutonomDriver implements Strategy {
 				motor.setRightSpeed(newSpeed);
 				motor.setLeftSpeed(MotorController.MAX_SPEED);
 			}
+
+			calValues.add(colorSensor.getLightValue());
+
+			if(calValues.size() == 5) {
+				calibrate();
+			}
 		}
 		motor.stop();
+	}
+
+	public void calibrate() {
+		int newSet = 0;
+		while(!calValues.isEmpty()) {
+			newSet += calValues.remove(0);
+		}
+		colorSensor.setSetpointValue(newSet / 5);
 	}
 }
