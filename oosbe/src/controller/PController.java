@@ -37,18 +37,15 @@ public class PController implements FeedbackController {
 	 */
 	@Override
 	public double getOutput(int actual, int setpoint) {
-		if(!(setpoint - actual > 0)) {
-			this.setpoint = setpoint;
-			actual = actual - this.offset;
-			int setpointTemp = setpoint - offset;
-		}
+		this.setpoint = setpoint;
+		actual = actual - this.offset;
+		int setpointTemp = setpoint - offset;
+		System.out.println(actual);
 		return ((setpoint - actual) * this.p) / ((double) setpoint * this.p);
 	}
 
 	public double getOutput(int actual) {
-		if(!(setpoint - actual > 0)) {
-			actual = actual - this.offset;
-		}
+		actual = actual - this.offset;
 		int setpointTemp = setpoint - offset;
 		return ((setpointTemp - actual) * this.p) / ((double) setpointTemp * this.p);
 	}
@@ -59,7 +56,7 @@ public class PController implements FeedbackController {
 	}
 
 	@Override
-	public void setOffset(int setpoint) {
+	public void setOffset(int offset) {
 		this.offset = offset;
 	}
 
