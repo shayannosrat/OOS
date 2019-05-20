@@ -52,7 +52,7 @@ public class WallEColorSensorController implements ColorSensorController {
 
 	@Override
 	public void setSetpointValue(int value) {
-		setpoint = value;
+		this.setpoint = value;
 		return;
 	}
 

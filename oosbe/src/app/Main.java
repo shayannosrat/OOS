@@ -7,6 +7,7 @@ import commands.LeftCommand;
 import commands.RightCommand;
 import commands.StopCommand;
 import controller.FeedbackController;
+import controller.MiniPID;
 import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
@@ -39,7 +40,7 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
-		FeedbackController con = new PController(1);
+		FeedbackController con = new MiniPID(0.25, 0.01, 0.4);
 
 		// init Strategys
 
