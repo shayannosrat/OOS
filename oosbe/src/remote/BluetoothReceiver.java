@@ -22,7 +22,7 @@ public class BluetoothReceiver extends RemoteCode {
 	private InputStream dataIn;
 
 	private BluetoothReceiver() {
-		connect();
+		//connect();
 	}
 
 	public static BluetoothReceiver getInstance() {

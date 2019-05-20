@@ -9,12 +9,6 @@ package controller;
  */
 public interface ColorSensorController extends BaseController {
 
-	/**
-	 * Checks if the sensor detects the line
-	 * 
-	 * @return
-	 */
-	boolean onLine();
 
 	/**
 	 * Returns the light value from the ColorSensor
@@ -33,5 +27,5 @@ public interface ColorSensorController extends BaseController {
 	 * 
 	 * @param value
 	 */
-	void setSetpointValue(int value);
+	void updateSetpointValue(int value);
 }

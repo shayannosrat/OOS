@@ -51,16 +51,104 @@ public class WallEMotorController implements MotorController {
 	 */
 	@Override
 	public void startForward() {
-		left.forward();
-		right.forward();
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				left.forward();
+			};
+		};
+		
+		Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				right.forward();
+			};
+		};
+		
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
 	public void startBackward() {
-		left.backward();
-		right.backward();
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				left.backward();
+			};
+		};
+		
+		Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				right.backward();
+			};
+		};
+		
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	@Override
+	public void startRightTurn() {
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				left.forward();
+			};
+		};
+		
+		Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				right.backward();
+			};
+		};
+		
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -68,8 +156,35 @@ public class WallEMotorController implements MotorController {
 	 */
 	@Override
 	public void stop() {
-		left.stop();
-		right.stop();
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				left.stop();
+			};
+		};
+		
+		Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				right.stop();
+			};
+		};
+		
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/*
@@ -92,21 +207,36 @@ public class WallEMotorController implements MotorController {
 		right.setSpeed(speed);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.MotorController#rotate(int)
-	 */
 	@Override
-	public void rotate(int angle) {
-		right.rotateTo(angle);
-		left.rotateTo(90);
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		right.rotateTo(-angle);
+	public int getRightPosition() {
+		return right.getPosition();
+	}
+	
+	@Override
+	public int getLeftPosition() {
+		return left.getPosition();
+	}
+	
+	@Override
+	public void rotateRight(int angle) {
+		right.rotate(angle);
+	}
+	
+	@Override
+	public void rotateLeft(int angle) {
+		left.rotate(angle);
+	}
+	
+	@Override
+	public void turnAround() {
+		this.setLeftSpeed(MAX_SPEED/2);
+		this.setRightSpeed(MAX_SPEED/2);
+		this.startRightTurn();
+		int preturnPosition = this.getLeftPosition();
+		while((this.getLeftPosition()-preturnPosition) <= 430) {
+			}
+		this.stop();
+		this.setLeftSpeed(MAX_SPEED);
+		this.setRightSpeed(MAX_SPEED);
 	}
 }

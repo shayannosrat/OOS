@@ -11,6 +11,7 @@ import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
 import strategy.Calibration;
+import strategy.FindLine;
 import strategy.StrategyException;
 
 /**
@@ -28,9 +29,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// init WallE
-
 		WallE wallE = new WallE();
-
+		
 		// init the Controllers
 		CommandInvoker invoker = new CommandInvoker();
 		invoker.registerForwardCommand(new ForwardCommand());
@@ -39,26 +39,31 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
+		
 		FeedbackController con = new PController(1);
-
+		
 		// init Strategys
 
-		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
+		FindLine findline = new FindLine(wallE, con);
 
-		bluetoothDriver.setInvoker(invoker);
+		//bluetoothDriver.setInvoker(invoker);
 
 		// register strategies
 		try {
-			wallE.registerStrategy(bluetoothDriver);
+			//wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
+			wallE.registerStrategy(findline);
 		} catch (StrategyException e) {
 			System.out.println("Strategies couldn't be registered! " + e.toString());
 			System.exit(1);
 		}
-
+		
+		
+		
 		// start the programm
 		wallE.startStrategies();
 	}

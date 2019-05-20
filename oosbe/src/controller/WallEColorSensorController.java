@@ -15,8 +15,7 @@ public class WallEColorSensorController implements ColorSensorController {
 
 	protected static WallEColorSensorController instance;
 	protected ColorSensor csensor;
-	protected int setpoint;
-	protected int offset;
+	protected int setpoint, offset, min, max;
 
 	public static WallEColorSensorController getInstance() {
 		if (instance == null)
@@ -27,17 +26,8 @@ public class WallEColorSensorController implements ColorSensorController {
 	private WallEColorSensorController() {
 		csensor = new ColorSensor(SensorPort.S4);
 		csensor.setFloodlight(true);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.ColorSensorController#onLine()
-	 */
-	@Override
-	public boolean onLine() {
-		// TODO Auto-generated method stub
-		return false;
+		min = 100;
+		max = 400;
 	}
 
 	/*
@@ -51,9 +41,14 @@ public class WallEColorSensorController implements ColorSensorController {
 	}
 
 	@Override
-	public void setSetpointValue(int value) {
-		setpoint = value;
-		return;
+	public void updateSetpointValue(int value) {
+		if(value > max)
+			max = value;
+		if(value < min) {
+			min = value;
+			this.setOffset(value);
+		}
+		setpoint = (min+max)/2;
 	}
 
 	@Override

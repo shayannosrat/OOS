@@ -17,12 +17,14 @@ public class WallE implements Robot {
 	private List<Strategy> strategies = new ArrayList<>();
 
 	public WallE() {
-		// bluetoothReceiver = BluetoothReceiver.getInstance();
-
+		//bluetoothReceiver = BluetoothReceiver.getInstance();
 		// Set the default state of the robot to calibrate
-		this.state = RobotState.CALIBRATION;
+		//this.state = RobotState.CALIBRATION;
+		
+		//Set the default state of the robot to find the line at first
+		this.state = RobotState.FIND_LINE;
 
-		bluetoothReceiver = BluetoothReceiver.getInstance();
+		//bluetoothReceiver = BluetoothReceiver.getInstance();
 	}
 
 	@Override
@@ -32,12 +34,12 @@ public class WallE implements Robot {
 
 	@Override
 	public int getState() {
-		int data = bluetoothReceiver.readData();
-		if (data == RemoteCode.BLUETOOTH_STATE) {
-			this.state = RobotState.BLUETOOTH;
-		} else if (data == RemoteCode.EXIT_STATE) {
-			this.state = RobotState.EXIT_PROGRAM;
-		}
+//		int data = bluetoothReceiver.readData();
+//		if (data == RemoteCode.BLUETOOTH_STATE) {
+//			this.state = RobotState.BLUETOOTH;
+//		} else if (data == RemoteCode.EXIT_STATE) {
+//			this.state = RobotState.EXIT_PROGRAM;
+//		}
 		return this.state;
 	}
 
@@ -64,17 +66,17 @@ public class WallE implements Robot {
 
 	@Override
 	public void startStrategies() {
-
-		while (this.state != RobotState.EXIT_PROGRAM) {
-			for (Strategy s : strategies) {
-				if (s.getState() == this.state) {
-					System.out.println("Strategy " + this.state);
-					s.start();
+		for(Strategy s : strategies) {
+			if(s.getState() == RobotState.FIND_LINE) {
+				System.out.println("Strategy found");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-
+				s.start();
 			}
 		}
-
-		System.exit(0);
-	}
+ 	}
 }

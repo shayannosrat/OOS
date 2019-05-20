@@ -19,6 +19,12 @@ public interface MotorController extends BaseController {
 	 * Starts the motor in the backward direction
 	 */
 	void startBackward();
+	
+	/**
+	 * Starts the motor into a right hand turn
+	 */
+	void startRightTurn();
+	
 
 	/**
 	 * Stops the motor
@@ -39,10 +45,14 @@ public interface MotorController extends BaseController {
 	 */
 	void setRightSpeed(int speed);
 
-	/**
-	 * Rotates the NXT by the given angle
-	 * 
-	 * @param angle
-	 */
-	void rotate(int angle);
+	
+	int getRightPosition();
+	
+	int getLeftPosition();
+	
+	void rotateRight(int angle);
+	
+	void rotateLeft(int angle);
+	
+	void turnAround();
 }
