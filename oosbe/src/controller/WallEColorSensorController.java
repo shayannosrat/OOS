@@ -47,6 +47,8 @@ public class WallEColorSensorController implements ColorSensorController {
 	 */
 	@Override
 	public int getLightValue() {
+		if(csensor.getNormalizedLightValue() - this.offset < 0)
+			return 0;
 		return csensor.getNormalizedLightValue() - this.offset;
 	}
 
@@ -64,7 +66,7 @@ public class WallEColorSensorController implements ColorSensorController {
 	@Override
 	public void setOffset(int offset) {
 		this.offset = offset;
-		
+		System.out.println("Real offset " + this.offset);
 	}
 
 	@Override

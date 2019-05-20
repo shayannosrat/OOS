@@ -8,7 +8,7 @@ package controller;
  */
 public interface MotorController extends BaseController {
 
-	public static final int MAX_SPEED = 600;
+	public static final int MAX_SPEED = 400;
 
 	/**
 	 * Starts the motor in the forward direction

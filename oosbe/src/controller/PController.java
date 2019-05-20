@@ -27,6 +27,9 @@ public class PController implements FeedbackController {
 	 */
 	@Override
 	public double getOutput(int actual, int setpoint) {
-		return ((setpoint - actual) * this.p) / ((double) setpoint * this.p);
+		if((setpoint-actual) < 0)
+			return -Math.pow(Math.abs((double)setpoint - actual),1) / Math.pow((double) setpoint,1);
+		else
+			return Math.pow((double)setpoint - actual,1) / Math.pow((double) setpoint,1);
 	}
 }

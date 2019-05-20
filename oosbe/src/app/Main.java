@@ -12,6 +12,7 @@ import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
 import strategy.Calibration;
+import strategy.LineLost;
 import strategy.StrategyException;
 
 /**
@@ -40,21 +41,23 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
-		FeedbackController con = new PController(0.01);
+		FeedbackController con = new PController(0.25);
 
 		// init Strategys
 
-		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
+		LineLost lost = new LineLost(wallE);
 
-		bluetoothDriver.setInvoker(invoker);
+		//bluetoothDriver.setInvoker(invoker);
 
 		// register strategies
 		try {
-			wallE.registerStrategy(bluetoothDriver);
+			//wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
+			wallE.registerStrategy(lost);
 		} catch (StrategyException e) {
 			System.out.println("Strategies couldn't be registered! " + e.toString());
 			System.exit(1);
