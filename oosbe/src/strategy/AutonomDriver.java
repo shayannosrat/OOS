@@ -88,10 +88,10 @@ public class AutonomDriver implements Strategy {
 			}
 
 			calValues.add(colorSensor.getLightValue());
-
+			/*
 			if(calValues.size() == 5) {
 				calibrate();
-			}
+			}*/
 		}
 		motor.stop();
 	}

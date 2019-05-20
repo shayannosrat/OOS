@@ -37,14 +37,18 @@ public class PController implements FeedbackController {
 	 */
 	@Override
 	public double getOutput(int actual, int setpoint) {
-		this.setpoint = setpoint;
-		actual = actual - this.offset;
-		int setpointTemp = setpoint - offset;
+		if(!(setpoint - actual > 0)) {
+			this.setpoint = setpoint;
+			actual = actual - this.offset;
+			int setpointTemp = setpoint - offset;
+		}
 		return ((setpoint - actual) * this.p) / ((double) setpoint * this.p);
 	}
 
 	public double getOutput(int actual) {
-		actual = actual - this.offset;
+		if(!(setpoint - actual > 0)) {
+			actual = actual - this.offset;
+		}
 		int setpointTemp = setpoint - offset;
 		return ((setpointTemp - actual) * this.p) / ((double) setpointTemp * this.p);
 	}
