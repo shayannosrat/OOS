@@ -43,7 +43,7 @@ public class remote extends RemoteCode {
  */
   public  void go()
   {
-    Sound.beepSequence();
+    //Sound.beepSequence();
     connect();
     while (true)
     {

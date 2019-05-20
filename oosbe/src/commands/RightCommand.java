@@ -5,11 +5,17 @@ import controller.WallEMotorController;
 
 public class RightCommand implements Command {
 
-	private MotorController controller = WallEMotorController.getInstance();
+	private MotorController controller;
 
-    @Override
-    public void execute() {
-    	controller.setRightSpeed(MotorController.MAX_SPEED);
-    	controller.setLeftSpeed((MotorController.MAX_SPEED) / 4);
-    }
+	public RightCommand() {
+		controller = WallEMotorController.getInstance();
+	}
+
+	@Override
+	public void execute() {
+
+		controller.setRightSpeed(MotorController.MAX_SPEED / 2);
+		controller.setLeftSpeed(MotorController.MAX_SPEED);
+
+	}
 }

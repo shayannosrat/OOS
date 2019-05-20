@@ -5,10 +5,16 @@ import controller.WallEMotorController;
 
 public class BackwardCommand implements Command {
 
-    private MotorController controller = WallEMotorController.getInstance();
+	private MotorController controller;
 
-    @Override
-    public void execute() {
-    	controller.startBackward();
-    }
+	public BackwardCommand() {
+		controller = WallEMotorController.getInstance();
+	}
+
+	@Override
+	public void execute() {
+		controller.setLeftSpeed(MotorController.MAX_SPEED);
+		controller.setRightSpeed(MotorController.MAX_SPEED);
+		controller.startBackward();
+	}
 }

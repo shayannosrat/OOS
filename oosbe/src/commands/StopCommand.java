@@ -5,10 +5,16 @@ import controller.WallEMotorController;
 
 public class StopCommand implements Command {
 
-	private MotorController controller = WallEMotorController.getInstance();
+	public MotorController controller;
 
-    @Override
-    public void execute() {
-    	controller.stop();
-    }
+	public StopCommand() {
+		this.controller = WallEMotorController.getInstance();
+	}
+
+	@Override
+	public void execute() {
+		controller.stop();
+
+	}
+
 }

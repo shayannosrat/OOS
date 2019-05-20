@@ -7,14 +7,15 @@ package strategy;
  */
 public interface Strategy {
 
-    /**
-     * Starts the strategy
-     */
-    void start();
+	/**
+	 * Starts the strategy
+	 */
+	void start();
 
-    /**
-     * Returns the state of the strategy
-     * @return the state
-     */
-    int getState();
+	/**
+	 * Returns the state of the strategy
+	 * 
+	 * @return the state
+	 */
+	int getState();
 }
