@@ -6,6 +6,8 @@ import commands.ForwardCommand;
 import commands.LeftCommand;
 import commands.RightCommand;
 import commands.StopCommand;
+import commands.SpeedupCommand;
+import commands.SpeeddownCommand;
 import controller.FeedbackController;
 import controller.PController;
 import strategy.AutonomDriver;
@@ -38,6 +40,8 @@ public class Main {
 		invoker.registerLeftCommand(new LeftCommand());
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
+		invoker.registerSpeedupCommand(new SpeedupCommand());
+		invoker.registerSpeeddownCommand(new SpeeddownCommand());
 
 		FeedbackController con = new PController(1);
 

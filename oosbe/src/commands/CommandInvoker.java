@@ -1,7 +1,7 @@
 package commands;
 
 public class CommandInvoker {
-	private Command left, right, forward, backward, stop;
+	private Command left, right, forward, backward, stop, speedup, speedodwn;
 
 	public void executeNextCommand() {
 
@@ -56,6 +56,24 @@ public class CommandInvoker {
 		this.stop = s;
 	}
 
+	/**
+	 * Set the Command executed, when stop is called.
+	 *
+	 * @param s Commad to execute
+	 */
+	public void registerSpeeddownCommand(Command s) {
+		this.speeddown = s;
+	}
+
+	/**
+	 * Set the Command executed, when stop is called.
+	 *
+	 * @param s Commad to execute
+	 */
+	public void registerSpeedupCommand(Command s) {
+		this.speedup = s;
+	}
+
 	/*
 	 * Invoke Methods
 	 */
@@ -94,6 +112,20 @@ public class CommandInvoker {
 	 */
 	public void stop() {
 		stop.execute();
+	}
+
+	/**
+	 * Execute the stop Command.
+	 */
+	public void speeddown() {
+		speedown.execute();
+	}
+
+	/**
+	 * Execute the stop Command.
+	 */
+	public void speedup() {
+		speedup.execute();
 	}
 
 }
