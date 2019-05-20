@@ -95,8 +95,14 @@ public class BluetoothSender {
 		System.out.println("Wall-E: Exiting state");
 		send(RemoteCode.EXIT_STATE);
 	  }
-	
 	  
-	
-	
+	  public void speedUp() {
+		  System.out.println("Wall-E: Speeding up");
+		  send(RemoteCode.SPEED_UP);
+	  }
+	  
+	  public void speedDown() {
+		  System.out.println("Wall-E: Speeding down");
+		  send(RemoteCode.SPEED_DOWN);
+	  }	
 }
