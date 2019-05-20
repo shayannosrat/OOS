@@ -52,8 +52,6 @@ public class AutonomDriver implements Strategy {
 
 		motor.setLeftSpeed(MotorController.MAX_SPEED);
 		motor.setRightSpeed(MotorController.MAX_SPEED);
-		
-		this.controller.setOffset(colorSensor.getOffset());
 
 		try {
 			Thread.sleep(1000);
@@ -88,21 +86,7 @@ public class AutonomDriver implements Strategy {
 				motor.setRightSpeed(newSpeed);
 				motor.setLeftSpeed(MotorController.MAX_SPEED);
 			}
-
-			calValues.add(colorSensor.getLightValue());
-			/*
-			if(calValues.size() == 5) {
-				calibrate();
-			}*/
 		}
 		motor.stop();
-	}
-
-	public void calibrate() {
-		int newSet = 0;
-		while(!calValues.isEmpty()) {
-			newSet += calValues.remove(0);
-		}
-		colorSensor.setSetpointValue(newSet / 5);
 	}
 }

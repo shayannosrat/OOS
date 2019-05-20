@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class WallEColorSensorCalibrator implements Calibrator {
 	private MotorController motor = WallEMotorController.getInstance();
-	private WallEColorSensorController csensor = WallEColorSensorController.getInstance();
+	private ColorSensorController csensor = WallEColorSensorController.getInstance();
 
 	/*
 	 * (non-Javadoc)
@@ -60,8 +60,6 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		average /= 60;
 		System.out.println("average: " + average);
 		csensor.setSetpointValue(average);
-		csensor.setOffset(colorlist.get(0));
-		System.out.println("Offset: " + colorlist.get(0));
 		motor.stop();
 	}
 }
