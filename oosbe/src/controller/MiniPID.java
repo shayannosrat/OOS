@@ -250,22 +250,24 @@ public class MiniPID implements FeedbackController{
 	 * @return calculated output value for driving the system
 	 */
 	@Override
-	public double getOutput(int actual, int setpoint){
+	public double getOutput(int actual, int setPoint){
 		double output;
 		double Poutput;
 		double Ioutput;
 		double Doutput;
 		double Foutput;
 
+		double setpoint = (double)setPoint;
+		
 		this.setpoint=setpoint;
 
 		// Ramp the setpoint used for calculations if user has opted to do so
 		if(setpointRange!=0){
-			setpoint=(int) constrain(setpoint,actual-setpointRange,actual+setpointRange);
+			setpoint= constrain(setpoint,(double)actual-setpointRange,actual+setpointRange);
 		}
 
 		// Do the simple parts of the calculations
-		double error=setpoint-actual;
+		double error=setpoint-(double)actual;
 
 		// Calculate F output. Notice, this depends only on the setpoint, and not the error. 
 		Foutput=F*setpoint;
@@ -277,7 +279,7 @@ public class MiniPID implements FeedbackController{
 		// For sensor, sanely assume it was exactly where it is now.
 		// For last output, we can assume it's the current time-independent outputs. 
 		if(firstRun){
-			lastActual=actual;
+			lastActual=(double)actual;
 			lastOutput=Poutput+Foutput;
 			firstRun=false;
 		}
