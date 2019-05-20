@@ -16,6 +16,7 @@ public class WallEColorSensorController implements ColorSensorController {
 	protected static WallEColorSensorController instance;
 	protected ColorSensor csensor;
 	protected int setpoint;
+	protected int offset;
 
 	public static WallEColorSensorController getInstance() {
 		if (instance == null)
@@ -59,6 +60,10 @@ public class WallEColorSensorController implements ColorSensorController {
 	public int getSetpointValue() {
 
 		return setpoint;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 
 }

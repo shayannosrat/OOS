@@ -9,4 +9,8 @@ public interface FeedbackController {
 	 * @return normalized value of the controller
 	 */
 	double getOutput(int actual, int setpoint);
+
+	void setSetpoint(int setpoint);
+
+	void setOffset(int setpoint);
 }
