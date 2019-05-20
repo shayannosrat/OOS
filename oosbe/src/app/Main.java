@@ -40,7 +40,7 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
-		FeedbackController con = new MiniPID(0.25, 0.01, 0.4);
+		FeedbackController con = new PController(100000000);
 
 		// init Strategys
 
