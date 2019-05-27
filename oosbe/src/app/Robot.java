@@ -6,11 +6,12 @@ import strategy.StrategyException;
 /**
  * Interface for the Robot - kind of a state machine
  *
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
 public interface Robot {
 	/**
 	 * Set the current state of the robot to select the matching strategy
+	 * @param state  
 	 */
 	void setState(int state);
 
@@ -31,7 +32,7 @@ public interface Robot {
 	void registerStrategy(Strategy strategy) throws StrategyException;
 
 	/**
-	 * Unregister a Strategy by looking for the state number of the given Strategy
+	 * Unregister a strategy by looking for the state number of the given Strategy
 	 * 
 	 * @param strategy
 	 * @throws StrategyException if the strategy is not found
@@ -39,7 +40,7 @@ public interface Robot {
 	Strategy unregisterStrategy(Strategy strategy) throws StrategyException;
 
 	/**
-	 * Starts the strategys depending on the current state of the robot
+	 * Starts the strategies depending on the current state of the robot
 	 */
 	void startStrategies();
 }

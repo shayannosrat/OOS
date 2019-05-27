@@ -9,6 +9,12 @@ import strategy.StrategyException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WallE Class implements the state machine, initiates the strategies and starts with the "Find Line" strategy
+ * 
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
+ *
+ */
 public class WallE implements Robot {
 	private BluetoothReceiver bluetoothReceiver;
 
@@ -22,12 +28,20 @@ public class WallE implements Robot {
 		// Set the default state of the robot to calibrate
 		this.state = RobotState.FIND_LINE;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see app.Robot#setState(int)
+	 */
 	@Override
 	public void setState(int state) {
 		this.state = state;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see app.Robot#getState()
+	 */
 	@Override
 	public int getState() {
 		int data = bluetoothReceiver.readData();
@@ -39,7 +53,11 @@ public class WallE implements Robot {
 		}
 		return this.state;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see app.Robot#registerStrategy(strategy.Strategy)
+	 */
 	@Override
 	public void registerStrategy(Strategy strategy) throws StrategyException {
 		for (Strategy s : strategies) {
@@ -50,6 +68,10 @@ public class WallE implements Robot {
 		strategies.add(strategy);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see app.Robot#unregisterStrategy(strategy.Strategy)
+	 */
 	@Override
 	public Strategy unregisterStrategy(Strategy strategy) throws StrategyException {
 		for (Strategy s : strategies) {
@@ -61,6 +83,10 @@ public class WallE implements Robot {
 		throw new StrategyException("Strategy not found");
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see app.Robot#startStrategies()
+	 */
 	@Override
 	public void startStrategies() {
 

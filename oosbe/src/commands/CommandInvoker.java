@@ -1,5 +1,11 @@
 package commands;
 
+/**
+ * Class for evaluating the commands
+ * 
+ * @author dr692175
+ *
+ */
 public class CommandInvoker {
 	private Command left, right, forward, backward, stop;
 

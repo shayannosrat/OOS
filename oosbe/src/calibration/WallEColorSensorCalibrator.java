@@ -1,6 +1,3 @@
-/**
- * 
- */
 package calibration;
 
 import controller.MotorController;
@@ -27,7 +24,6 @@ public class WallEColorSensorCalibrator implements Calibrator {
 	 * 
 	 * @see calibration.Calibrator#run()
 	 */
-
 	@Override
 	public void runCalibration() {
 		// TODO Auto-generated method stub

@@ -18,7 +18,7 @@ import strategy.StrategyException;
 /**
  * Main Class to start the program.
  * 
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class Main {
@@ -33,7 +33,7 @@ public class Main {
 
 		WallE wallE = new WallE();
 
-		// init the Controllers
+		// init the controllers
 		CommandInvoker invoker = new CommandInvoker();
 		invoker.registerForwardCommand(new ForwardCommand());
 		invoker.registerStopCommand(new StopCommand());
@@ -43,7 +43,7 @@ public class Main {
 
 		FeedbackController con = new PController(0.85);
 
-		// init Strategys
+		// init strategies
 
 		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
@@ -65,7 +65,7 @@ public class Main {
 			System.exit(1);
 		}
 
-		// start the programm
+		// start the program
 		wallE.startStrategies();
 	}
 }

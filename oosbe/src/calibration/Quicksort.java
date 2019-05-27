@@ -2,6 +2,12 @@ package calibration;
 
 import java.util.ArrayList;
 
+/**
+ * Class for sorting the light-values during calibration
+ * 
+ * @author dr692175
+ *
+ */
 public class Quicksort {
 	private ArrayList<Integer> list;
 
