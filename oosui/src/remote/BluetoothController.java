@@ -22,7 +22,7 @@ public class BluetoothController
     	 String address = "00:16:53:1B:C5:4F";
     	 
     	 BluetoothSender btSender = new BluetoothSender();
-    	 //btSender.connect(name, address);
+    	 btSender.connect(name, address);
     	 
     	 
     	 JFrame f = new JFrame();
@@ -80,7 +80,9 @@ public class BluetoothController
                     	 btSender.right();
                          break;
                      case 32: //state ändern SPACE
+                    	 System.out.println("State");
                     	 btSender.changeState();
+                    	
                     	 break;
                      case 16: //state exit RIGHTSHIFT
                     	 btSender.exitState();

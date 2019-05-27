@@ -46,7 +46,7 @@ public class Main {
 
 		// init Strategys
 
-		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
 		LineLost lost = new LineLost(wallE);
@@ -56,7 +56,7 @@ public class Main {
 
 		// register strategies
 		try {
-			//wallE.registerStrategy(bluetoothDriver);
+			wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
 			wallE.registerStrategy(lost);
