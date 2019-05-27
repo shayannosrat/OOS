@@ -22,7 +22,7 @@ public class BluetoothController
     	 String address = "00:16:53:1B:C5:4F";
     	 
     	 BluetoothSender btSender = new BluetoothSender();
-    	 //btSender.connect(name, address);
+    	 btSender.connect(name, address);
     	 
     	 
     	 JFrame f = new JFrame();
@@ -50,7 +50,7 @@ public class BluetoothController
          
          JTable table = new JTable(data, columnNames);
          
-         f.add(table);
+         //f.add(table);
          
          f.addKeyListener(new KeyListener() {
              @Override

@@ -29,10 +29,10 @@ public class LineLost implements Strategy {
 		motor.setRightSpeed(MotorController.MAX_SPEED);
 		motor.setLeftSpeed(MotorController.MAX_SPEED);
 				
-		int speed = 10;
+		int speed = 50;
 		int counter = 0;
 		
-		while(csensor.getLightValue() > csensor.getSetpointValue()) {
+		while(csensor.getLightValue() > csensor.getSetpointValue() && robot.getState() == this.state) {
 			if (this.ultrasonicSensor.readData() <= 10) {
 				motor.stop();
 				continue;
@@ -40,9 +40,9 @@ public class LineLost implements Strategy {
 			motor.setRightSpeed(speed);
 			motor.setLeftSpeed(MotorController.MAX_SPEED);
 			motor.startForward();
-			if(counter == 20) {
+			if(counter == 10) {
 				if(speed <= MotorController.MAX_SPEED - 50) {
-					speed += 10;
+					speed += 20;
 				}
 				counter = 0;
 			} else {
@@ -51,7 +51,16 @@ public class LineLost implements Strategy {
 			
 		}
 		motor.stop();
-		robot.setState(RobotState.AUTONOM);
+		if(robot.getState() == this.state) {
+			while(csensor.getLightValue() > csensor.getSetpointValue()) {
+				motor.setRightSpeed(0);
+				motor.setLeftSpeed(MotorController.MAX_SPEED);
+				motor.startForward();
+			}
+			motor.stop();
+			robot.setState(RobotState.AUTONOM);
+		}
+		
 	}
 
 	@Override

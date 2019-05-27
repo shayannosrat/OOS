@@ -10,12 +10,13 @@ package controller;
  *
  */
 public class PController implements FeedbackController {
-
+	double p;
 	/**
 	 * The cooeficient of the controller
 	 */
 
 	public PController(double p) {
+		this.p = p;
 	}
 
 	/*
@@ -26,8 +27,12 @@ public class PController implements FeedbackController {
 	@Override
 	public double getOutput(int actual, int setpoint) {
 		if((setpoint-actual) < 0)
-			return -Math.pow(Math.abs((double)setpoint - actual),1) / Math.pow((double) setpoint,1);
+			return -Math.pow(this.p*Math.abs((double)setpoint - actual),1) / Math.pow((double) setpoint,1);
 		else
-			return Math.pow((double)setpoint - actual,1) / Math.pow((double) setpoint,1);
+			return Math.pow(this.p*(double)setpoint - actual,1) / Math.pow((double) setpoint,1);
+	}
+	
+	public double getP() {
+		return this.p;
 	}
 }

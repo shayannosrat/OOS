@@ -17,7 +17,7 @@ public class WallE implements Robot {
 	private List<Strategy> strategies = new ArrayList<>();
 
 	public WallE() {
-		//bluetoothReceiver = BluetoothReceiver.getInstance();
+		bluetoothReceiver = BluetoothReceiver.getInstance();
 
 		// Set the default state of the robot to calibrate
 		this.state = RobotState.FIND_LINE;
@@ -30,13 +30,13 @@ public class WallE implements Robot {
 
 	@Override
 	public int getState() {
-		/*int data = bluetoothReceiver.readData();
+		int data = bluetoothReceiver.readData();
 		if (data == RemoteCode.BLUETOOTH_STATE) {
 			this.state = RobotState.BLUETOOTH;
 			System.out.println("State");
 		} else if (data == RemoteCode.EXIT_STATE) {
 			this.state = RobotState.EXIT_PROGRAM;
-		}*/
+		}
 		return this.state;
 	}
 

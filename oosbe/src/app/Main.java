@@ -7,7 +7,6 @@ import commands.LeftCommand;
 import commands.RightCommand;
 import commands.StopCommand;
 import controller.FeedbackController;
-import controller.MiniPID;
 import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
@@ -42,21 +41,21 @@ public class Main {
 		invoker.registerRightCommand(new RightCommand());
 		invoker.registerBackwardCommand(new BackwardCommand());
 
-		FeedbackController con = new PController(0.25);
+		FeedbackController con = new PController(0.85);
 
 		// init Strategys
 
-		//BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
+		BluetoothDriver bluetoothDriver = new BluetoothDriver(wallE);
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
 		LineLost lost = new LineLost(wallE);
 		FindLine find = new FindLine(wallE);
 
-		//bluetoothDriver.setInvoker(invoker);
+		bluetoothDriver.setInvoker(invoker);
 
 		// register strategies
 		try {
-			//wallE.registerStrategy(bluetoothDriver);
+			wallE.registerStrategy(bluetoothDriver);
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
 			wallE.registerStrategy(lost);

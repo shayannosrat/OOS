@@ -56,7 +56,7 @@ public class AutonomDriver implements Strategy {
 		int lostCounter = 0;
 
 		while (robot.getState() == this.state) {
-			if (this.ultrasonicSensor.readData() <= 10) {
+			if (this.ultrasonicSensor.readData() <= 20) {
 				motor.stop();
 				continue;
 			}
@@ -79,7 +79,7 @@ public class AutonomDriver implements Strategy {
 				motor.setRightSpeed(newSpeed);
 				motor.setLeftSpeed(MotorController.MAX_SPEED);
 			}
-			if(output < -0.8) {
+			if(output < (-0.8 * controller.getP()) ) {
 				if(lostCounter == 5) {
 					robot.setState(RobotState.LINE_LOST);
 					break;
