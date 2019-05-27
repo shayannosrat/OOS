@@ -65,7 +65,6 @@ public class AutonomDriver implements Strategy {
 
 			motor.startForward();
 			output = controller.getOutput(colorSensor.getLightValue(), setpoint);
-			System.out.println("output: " + colorSensor.getLightValue());
 			int newSpeed;
 			if (output > 1 || output < -1) {
 				newSpeed = 0;
@@ -80,7 +79,6 @@ public class AutonomDriver implements Strategy {
 				motor.setRightSpeed(newSpeed);
 				motor.setLeftSpeed(MotorController.MAX_SPEED);
 			}
-			System.out.println("fahren");
 			if(output < -0.8) {
 				if(lostCounter == 5) {
 					robot.setState(RobotState.LINE_LOST);

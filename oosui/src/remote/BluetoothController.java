@@ -22,7 +22,7 @@ public class BluetoothController
     	 String address = "00:16:53:1B:C5:4F";
     	 
     	 BluetoothSender btSender = new BluetoothSender();
-    	 btSender.connect(name, address);
+    	 //btSender.connect(name, address);
     	 
     	 
     	 JFrame f = new JFrame();
@@ -52,12 +52,6 @@ public class BluetoothController
          
          f.add(table);
          
-         f.setVisible(true);
-         f.setSize(600, 600);
-
-          
-         
-         
          f.addKeyListener(new KeyListener() {
              @Override
              public void keyTyped(KeyEvent e) {
@@ -65,7 +59,7 @@ public class BluetoothController
 
              @Override
              public void keyPressed(KeyEvent e) {
-
+            	 System.out.println(e.getKeyCode());
                  switch (e.getKeyCode()) {
                      case 87:    //W oben
                         btSender.forward();
@@ -82,7 +76,6 @@ public class BluetoothController
                      case 32: //state ändern SPACE
                     	 System.out.println("State");
                     	 btSender.changeState();
-                    	
                     	 break;
                      case 16: //state exit RIGHTSHIFT
                     	 btSender.exitState();
@@ -105,11 +98,10 @@ public class BluetoothController
              public void keyReleased(KeyEvent e) {
             	// btSender.stop();
              }
- });
-    	 
-    	 
-
-    	 
+         });
+         
+         f.setVisible(true);
+         f.setSize(600, 600);    	 
     }
 
 }

@@ -14,10 +14,8 @@ public class PController implements FeedbackController {
 	/**
 	 * The cooeficient of the controller
 	 */
-	private double p;
 
 	public PController(double p) {
-		this.p = p;
 	}
 
 	/*
