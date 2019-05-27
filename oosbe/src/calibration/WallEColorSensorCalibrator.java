@@ -5,6 +5,7 @@ package calibration;
 
 import controller.MotorController;
 import controller.WallEMotorController;
+import lejos.nxt.Button;
 import controller.ColorSensorController;
 import controller.WallEColorSensorController;
 import java.util.ArrayList;
@@ -31,11 +32,11 @@ public class WallEColorSensorCalibrator implements Calibrator {
 	public void runCalibration() {
 		// TODO Auto-generated method stub
 		ArrayList<Integer> colorlist = new ArrayList<>();
-		motor.setRightSpeed(100);
+		motor.setRightSpeed(400);
 		motor.setLeftSpeed(0);
 		motor.startForward();
 
-		for (int i = 0; i < 400; i++) {
+		for (int i = 0; i < 100; i++) {
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
@@ -45,6 +46,7 @@ public class WallEColorSensorCalibrator implements Calibrator {
 			colorlist.add(csensor.getLightValue());
 			System.out.println(colorlist.get(i));
 		}
+		motor.stop();
 		Quicksort qs = new Quicksort(colorlist);
 		colorlist = qs.getsortedList();
 //				for (int i = 0; i < colorlist.size()-1; i++) {
@@ -54,7 +56,7 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		for (int i = 0; i < 5; i++) {
 			average += colorlist.get(i);
 		}
-		for (int i = 395; i < 400; i++) {
+		for (int i = 95; i < 100; i++) {
 			average += colorlist.get(i);
 		}
 		average /= 10;
@@ -62,6 +64,6 @@ public class WallEColorSensorCalibrator implements Calibrator {
 		csensor.setSetpointValue(average);
 		csensor.setOffset(colorlist.get(0));
 		System.out.println("Offset: " + colorlist.get(0));
-		motor.stop();
+		
 	}
 }

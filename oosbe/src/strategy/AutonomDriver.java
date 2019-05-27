@@ -52,8 +52,10 @@ public class AutonomDriver implements Strategy {
 
 		motor.setLeftSpeed(MotorController.MAX_SPEED);
 		motor.setRightSpeed(MotorController.MAX_SPEED);
+		
+		int lostCounter = 0;
 
-		while (/*robot.getState() == this.state*/ true) {
+		while (robot.getState() == this.state) {
 			if (this.ultrasonicSensor.readData() <= 10) {
 				motor.stop();
 				continue;
@@ -63,10 +65,6 @@ public class AutonomDriver implements Strategy {
 
 			motor.startForward();
 			output = controller.getOutput(colorSensor.getLightValue(), setpoint);
-			if(output < -0.8) {
-				robot.setState(RobotState.LINE_LOST);
-				break;
-			}
 			System.out.println("output: " + colorSensor.getLightValue());
 			int newSpeed;
 			if (output > 1 || output < -1) {
@@ -83,6 +81,16 @@ public class AutonomDriver implements Strategy {
 				motor.setLeftSpeed(MotorController.MAX_SPEED);
 			}
 			System.out.println("fahren");
+			if(output < -0.8) {
+				if(lostCounter == 5) {
+					robot.setState(RobotState.LINE_LOST);
+					break;
+				} else {
+					lostCounter++;
+				}
+			} else {
+				lostCounter = 0;
+			}
 		}
 		motor.stop();
 	}

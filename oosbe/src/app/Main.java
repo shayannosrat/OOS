@@ -12,6 +12,7 @@ import controller.PController;
 import strategy.AutonomDriver;
 import strategy.BluetoothDriver;
 import strategy.Calibration;
+import strategy.FindLine;
 import strategy.LineLost;
 import strategy.StrategyException;
 
@@ -49,6 +50,7 @@ public class Main {
 		AutonomDriver autonomDriver = new AutonomDriver(wallE, con);
 		Calibration calibration = new Calibration(wallE);
 		LineLost lost = new LineLost(wallE);
+		FindLine find = new FindLine(wallE);
 
 		//bluetoothDriver.setInvoker(invoker);
 
@@ -58,6 +60,7 @@ public class Main {
 			wallE.registerStrategy(autonomDriver);
 			wallE.registerStrategy(calibration);
 			wallE.registerStrategy(lost);
+			wallE.registerStrategy(find);
 		} catch (StrategyException e) {
 			System.out.println("Strategies couldn't be registered! " + e.toString());
 			System.exit(1);
