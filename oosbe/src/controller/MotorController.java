@@ -6,7 +6,7 @@ package controller;
  * @author Till Kobbe
  *
  */
-public interface MotorController extends BaseController {
+public interface MotorController {
 
 	public static final int MAX_SPEED = 600;
 

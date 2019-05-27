@@ -7,6 +7,6 @@ package controller;
  * @author Till Kobbe
  *
  */
-public interface UltrasonicSensorController extends BaseController {
+public interface UltrasonicSensorController {
 	int readData();
 }

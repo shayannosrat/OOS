@@ -3,7 +3,7 @@ package constants;
 /**
  * Defines the constants used for the bluetooth commands
  *
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
 public abstract class RemoteCode {
 	public static final int FORWARD = 0;

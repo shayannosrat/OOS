@@ -3,6 +3,12 @@ package commands;
 import controller.MotorController;
 import controller.WallEMotorController;
 
+/**
+ * Class for driving right
+ * 
+ * @author dr692175
+ *
+ */
 public class RightCommand implements Command {
 
 	private MotorController controller;

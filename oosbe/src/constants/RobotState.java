@@ -3,7 +3,7 @@ package constants;
 /**
  * Defines the state constants for the Robot
  *
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
 public abstract class RobotState {
 

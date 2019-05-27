@@ -3,6 +3,12 @@ package commands;
 import controller.MotorController;
 import controller.WallEMotorController;
 
+/**
+ * Class for driving forwards
+ * 
+ * @author dr692175
+ *
+ */
 public class ForwardCommand implements Command {
 
 	private MotorController controller;
