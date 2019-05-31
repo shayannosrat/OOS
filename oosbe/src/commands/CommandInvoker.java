@@ -3,7 +3,7 @@ package commands;
 /**
  * Class for evaluating the commands
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class CommandInvoker {
@@ -20,7 +20,7 @@ public class CommandInvoker {
 	/**
 	 * Set the Command executed, when left is called.
 	 * 
-	 * @param l Commad to execute
+	 * @param l Command to execute
 	 */
 	public void registerLeftCommand(Command l) {
 		this.left = l;
@@ -29,7 +29,7 @@ public class CommandInvoker {
 	/**
 	 * Set the Command executed, when right is called.
 	 * 
-	 * @param r Commad to execute
+	 * @param r Command to execute
 	 */
 	public void registerRightCommand(Command r) {
 		this.right = r;
@@ -38,7 +38,7 @@ public class CommandInvoker {
 	/**
 	 * Set the Command executed, when forward is called.
 	 * 
-	 * @param f Commad to execute
+	 * @param f Command to execute
 	 */
 	public void registerForwardCommand(Command f) {
 		this.forward = f;
@@ -47,7 +47,7 @@ public class CommandInvoker {
 	/**
 	 * Set the Command executed, when backward is called.
 	 * 
-	 * @param b Commad to execute
+	 * @param b Command to execute
 	 */
 	public void registerBackwardCommand(Command b) {
 		this.backward = b;
@@ -56,7 +56,7 @@ public class CommandInvoker {
 	/**
 	 * Set the Command executed, when stop is called.
 	 * 
-	 * @param s Commad to execute
+	 * @param s Command to execute
 	 */
 	public void registerStopCommand(Command s) {
 		this.stop = s;

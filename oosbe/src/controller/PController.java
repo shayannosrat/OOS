@@ -1,19 +1,14 @@
-/**
- * 
- */
 package controller;
 
 /**
  * Class for a simple P-Controller
  * 
- * @author Till
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class PController implements FeedbackController {
-	double p;
-	/**
-	 * The cooeficient of the controller
-	 */
+
+	double p;		//The coefficient of the controller
 
 	public PController(double p) {
 		this.p = p;
@@ -32,6 +27,12 @@ public class PController implements FeedbackController {
 			return Math.pow(this.p*(double)setpoint - actual,1) / Math.pow((double) setpoint,1);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.FeedbackController#getP()
+	 */
+	@Override
 	public double getP() {
 		return this.p;
 	}

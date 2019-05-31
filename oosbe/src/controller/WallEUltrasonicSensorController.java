@@ -4,9 +4,9 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
 /**
- * Dummy for testing and exaple of using an anonymous Calibrator class
+ * Controls the UltrasonicSensor of WallE
  * 
- * @author Till Kobbe
+ * @author Till Kobbe; Shayan Nostrat, Nick Göller, David Rölleke
  *
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
@@ -14,6 +14,10 @@ public class WallEUltrasonicSensorController implements UltrasonicSensorControll
 
 	private UltrasonicSensor usensor;
 
+	/**
+	 * Checks if an instance of WallEUltrasonicSensorController already exists and creates one if not
+	 * @return instance of WallEUltrasonicSensorController
+	 */
 	public static WallEUltrasonicSensorController getInstance() {
 		if (instance == null)
 			instance = new WallEUltrasonicSensorController();
@@ -21,11 +25,19 @@ public class WallEUltrasonicSensorController implements UltrasonicSensorControll
 		return instance;
 	}
 
+	/**
+	 * Constructor using the default UltrasonicSensor ports
+	 */
 	private WallEUltrasonicSensorController() {
 		usensor = new UltrasonicSensor(SensorPort.S1);
 		usensor.continuous();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.UltrasonicSensorController#readData()
+	 */
 	@Override
 	public int readData() {
 		return usensor.getDistance();

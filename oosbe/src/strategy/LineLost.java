@@ -10,6 +10,13 @@ import controller.WallEMotorController;
 import controller.WallEUltrasonicSensorController;
 import lejos.nxt.ColorSensor;
 
+/**
+ * Positions the robot back on the line by driving in a spiral with increasing radius.
+ * Sets the robot back in autonomous driving when the line is found again.
+ * 
+ * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ */
+
 public class LineLost implements Strategy {
 	
 	private ColorSensorController csensor = WallEColorSensorController.getInstance();
@@ -17,15 +24,24 @@ public class LineLost implements Strategy {
 	private UltrasonicSensorController ultrasonicSensor = WallEUltrasonicSensorController.getInstance();
 	private Robot robot;
 	
+	/**
+	 * default constructor for LineLost
+	 * @param r The robot which the LineLost strategy should steer
+	 */
 	public LineLost(Robot robot) {
 		this.robot = robot;
 	}
 
 	private final int state = RobotState.LINE_LOST;
 	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#start()
+	 */
 	@Override
 	public void start() {
-		System.out.println("Verloren digger");
+		System.out.println("Linie Verloren");
 		motor.setRightSpeed(MotorController.MAX_SPEED);
 		motor.setLeftSpeed(MotorController.MAX_SPEED);
 				
@@ -63,6 +79,11 @@ public class LineLost implements Strategy {
 		
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#getState()
+	 */
 	@Override
 	public int getState() {
 		return this.state;

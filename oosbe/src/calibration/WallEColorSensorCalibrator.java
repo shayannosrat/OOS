@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 
  * Offers calibration method used in the constructor of the controllers.
  * 
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class WallEColorSensorCalibrator implements Calibrator {

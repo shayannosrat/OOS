@@ -6,7 +6,7 @@ import lejos.nxt.NXTRegulatedMotor;
 /**
  * Controls the motors of Wall-E
  * 
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class WallEMotorController implements MotorController {
@@ -37,7 +37,11 @@ public class WallEMotorController implements MotorController {
 		right.setSpeed(MAX_SPEED);
 
 	}
-
+	
+	/**
+	 * Checks if an instance of WallEMotorController already exists and creates one if not
+	 * @return instance of WallEMotorController
+	 */
 	public static WallEMotorController getInstance() {
 		if (instance == null)
 			instance = new WallEMotorController();
@@ -47,7 +51,7 @@ public class WallEMotorController implements MotorController {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see controller.MotorController#start()
+	 * @see controller.MotorController#startForward()
 	 */
 	@Override
 	public void startForward() {
@@ -83,6 +87,11 @@ public class WallEMotorController implements MotorController {
 		
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#startBackward()
+	 */
 	@Override
 	public void startBackward() {
 		Thread t1 = new Thread() {
@@ -116,6 +125,11 @@ public class WallEMotorController implements MotorController {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#startRightTurn()
+	 */
 	@Override
 	public void startRightTurn() {
 		Thread t1 = new Thread() {
@@ -207,26 +221,41 @@ public class WallEMotorController implements MotorController {
 		right.setSpeed(speed);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#getRightPosition()
+	 */
 	@Override
 	public int getRightPosition() {
 		return right.getPosition();
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#getLeftPosition()
+	 */
 	@Override
 	public int getLeftPosition() {
 		return left.getPosition();
 	}
+//	
+//	@Override
+//	public void rotateRight(int angle) {
+//		right.rotate(angle);
+//	}
+//	
+//	@Override
+//	public void rotateLeft(int angle) {
+//		left.rotate(angle);
+//	}
 	
-	@Override
-	public void rotateRight(int angle) {
-		right.rotate(angle);
-	}
-	
-	@Override
-	public void rotateLeft(int angle) {
-		left.rotate(angle);
-	}
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#turnAround()
+	 */
 	@Override
 	public void turnAround() {
 		this.setLeftSpeed(MAX_SPEED/2);

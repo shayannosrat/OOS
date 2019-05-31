@@ -4,9 +4,9 @@ import controller.MotorController;
 import controller.WallEMotorController;
 
 /**
- * Class for driving forwards
+ * Command Pattern for driving forwards
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class ForwardCommand implements Command {
@@ -17,6 +17,10 @@ public class ForwardCommand implements Command {
 		controller = WallEMotorController.getInstance();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see commands.Command#execute()
+	 */
 	@Override
 	public void execute() {
 		controller.setLeftSpeed(MotorController.MAX_SPEED);

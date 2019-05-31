@@ -3,7 +3,7 @@ package commands;
 /**
  * Command interface for the command pattern.
  *
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
 public interface Command {
 

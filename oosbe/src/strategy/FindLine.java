@@ -12,6 +12,14 @@ import controller.WallEUltrasonicSensorController;
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 
+/**
+ * Searches the line if it was never found before.
+ * the robot drives in a straight line until it detects an object infront of it. It then
+ * turns a bit less than 180° around and goes straight on until it detects another object.
+ * 
+ * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ */
+
 public class FindLine implements Strategy {
 
 	private MotorController motor;
@@ -24,7 +32,11 @@ public class FindLine implements Strategy {
 	
 	private Robot robot;
 	
-	
+	/**
+	 * default constructor for FindLine. Creates a Motor-, ColorSensor- and UltrasonicSensorController
+	 * upon calling.
+	 * @param r The robot which the FindLine strategy should steer
+	 */
 	public FindLine(Robot r) {
 		this.motor = WallEMotorController.getInstance();
 		this.colorSensor = WallEColorSensorController.getInstance();
@@ -32,11 +44,22 @@ public class FindLine implements Strategy {
 		this.robot = r;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#start()
+	 */
+
 	@Override
 	public int getState() {
 		return this.state;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#getState()
+	 */
 	@Override
 	public void start() {
 		System.out.println("Start Searching..");
@@ -49,12 +72,6 @@ public class FindLine implements Strategy {
 		
 		int setpoint = colorSensor.getLightValue(), iterator = 0;
 		
-//		while (robot.getState() == this.state) {
-//			if (this.ultrasonicSensor.readData() <= 30) {
-//				motor.stop();
-//				continue;
-//			}/(600/430)
-//		}
 		while(robot.getState() == RobotState.FIND_LINE) {
 			motor.startForward();
 			//colorSensor.calibrate();
@@ -71,15 +88,12 @@ public class FindLine implements Strategy {
 				
 			}
 			if(robot.getState() == RobotState.FIND_LINE) {
-				System.out.println("MAX_SPEED: "+MotorController.MAX_SPEED);
 				motor.stop();
 				motor.turnAround();
 			}
 			motor.stop();
 			
-			
 		}
-		System.out.println("Testende");
 	}
 
 }

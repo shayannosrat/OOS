@@ -4,9 +4,9 @@ import controller.MotorController;
 import controller.WallEMotorController;
 
 /**
- * Class for driving left
+ * Command Pattern for driving left
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class LeftCommand implements Command {
@@ -17,6 +17,10 @@ public class LeftCommand implements Command {
 		controller = WallEMotorController.getInstance();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see commands.Command#execute()
+	 */
 	@Override
 	public void execute() {
 		controller.setRightSpeed(MotorController.MAX_SPEED);

@@ -4,9 +4,9 @@ import controller.MotorController;
 import controller.WallEMotorController;
 
 /**
- * Class for driving right
+ * Command Pattern for driving right
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class RightCommand implements Command {
@@ -17,6 +17,10 @@ public class RightCommand implements Command {
 		controller = WallEMotorController.getInstance();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see commands.Command#execute()
+	 */
 	@Override
 	public void execute() {
 

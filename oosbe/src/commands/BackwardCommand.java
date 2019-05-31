@@ -4,9 +4,9 @@ import controller.MotorController;
 import controller.WallEMotorController;
 
 /**
- * Class for driving backwards
+ * Command Pattern for driving backwards
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class BackwardCommand implements Command {

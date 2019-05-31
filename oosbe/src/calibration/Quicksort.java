@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class for sorting the light-values during calibration
  * 
- * @author dr692175
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public class Quicksort {

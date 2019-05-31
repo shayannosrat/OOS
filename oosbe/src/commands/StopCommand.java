@@ -4,7 +4,7 @@ import controller.MotorController;
 import controller.WallEMotorController;
 
 /**
- * Class for stopping the robot
+ * Command Pattern for stopping the robot
  * 
  * @author dr692175
  *
@@ -17,6 +17,10 @@ public class StopCommand implements Command {
 		this.controller = WallEMotorController.getInstance();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see commands.Command#execute()
+	 */
 	@Override
 	public void execute() {
 		controller.stop();

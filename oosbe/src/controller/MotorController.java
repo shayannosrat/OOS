@@ -3,7 +3,7 @@ package controller;
 /**
  * Controls the motor(s).
  * 
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
 public interface MotorController {
@@ -45,14 +45,24 @@ public interface MotorController {
 	 */
 	void setRightSpeed(int speed);
 
-	
+	/**
+	 * Returns the position of the right motor in degrees
+	 * @return degrees which the right motor rotated since reset
+	 */
 	int getRightPosition();
 	
+	/**
+	 * Returns the position of the left motor in degrees
+	 * @return degrees which the left motor rotated since reset
+	 */
 	int getLeftPosition();
 	
-	void rotateRight(int angle);
+//	void rotateRight(int angle);
+//	
+//	void rotateLeft(int angle);
 	
-	void rotateLeft(int angle);
-	
+	/**
+	 * Turns the robot 180 degrees around its own axis
+	 */
 	void turnAround();
 }

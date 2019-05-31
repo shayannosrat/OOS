@@ -14,9 +14,9 @@ import strategy.Strategy;
 import java.util.ArrayList;
 
 /**
- * The main driver claas. Controls the robot such as it stays on the line.
+ * The main driver class. Controls the robot so that it stays on the line.
  * 
- * @author Till Kobbe
+ * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
  *
  */
 public class AutonomDriver implements Strategy {
@@ -26,12 +26,18 @@ public class AutonomDriver implements Strategy {
 
 	private FeedbackController controller;
 
-	private final int state = RobotState.AUTONOM;
+	private final int state = RobotState.AUTONOM;		
 
 	private Robot robot;
 
 	private ArrayList<Integer> calValues;
 
+	/**
+	 * default constructor of the autonomous driver. Creates a Motor-, UltrasonicSensor-
+	 * and ColorSensorController upon calling
+	 * @param r  The robot which should be steered by the autonomous driver
+	 * @param con	The feedback controller, which evaluates the color and ultrasonic values and converts them into steering outputs
+	 */
 	public AutonomDriver(Robot r, FeedbackController con) {
 		this.motor = WallEMotorController.getInstance();
 		this.colorSensor = WallEColorSensorController.getInstance();
@@ -41,11 +47,21 @@ public class AutonomDriver implements Strategy {
 		calValues = new ArrayList<>();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#getState()
+	 */
 	@Override
 	public int getState() {
 		return this.state;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see strategy.Strategy#start()
+	 */
 	@Override
 	public void start() {
 		System.out.println("Starting Auto");
