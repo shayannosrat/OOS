@@ -18,7 +18,7 @@ public class StrategyException extends Exception {
 	/**
 	 * Constructs an exception with the given detail message
 	 * 
-	 * @param msg
+	 * @param msg The message that should be send with the exception
 	 */
 	public StrategyException(String msg) {
 		this.msg = msg;

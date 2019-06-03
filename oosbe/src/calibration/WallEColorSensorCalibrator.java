@@ -2,7 +2,6 @@ package calibration;
 
 import controller.MotorController;
 import controller.WallEMotorController;
-import lejos.nxt.Button;
 import controller.ColorSensorController;
 import controller.WallEColorSensorController;
 import java.util.ArrayList;
@@ -16,8 +15,8 @@ import java.util.ArrayList;
  *
  */
 public class WallEColorSensorCalibrator implements Calibrator {
-	private MotorController motor = WallEMotorController.getInstance();
-	private ColorSensorController csensor = WallEColorSensorController.getInstance();
+	private final MotorController motor = WallEMotorController.getInstance();
+	private final ColorSensorController csensor = WallEColorSensorController.getInstance();
 
 	/*
 	 * (non-Javadoc)

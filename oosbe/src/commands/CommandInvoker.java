@@ -9,10 +9,6 @@ package commands;
 public class CommandInvoker {
 	private Command left, right, forward, backward, stop;
 
-	public void executeNextCommand() {
-
-	}
-
 	/*
 	 * Register Methods
 	 */

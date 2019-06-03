@@ -2,7 +2,6 @@ package strategy;
 
 import app.Robot;
 import constants.RobotState;
-import controller.ColorSensorController;
 import controller.FeedbackController;
 import controller.MotorController;
 import controller.UltrasonicSensorController;
@@ -11,26 +10,23 @@ import controller.WallEMotorController;
 import controller.WallEUltrasonicSensorController;
 import strategy.Strategy;
 
-import java.util.ArrayList;
-
 /**
  * The main driver class. Controls the robot so that it stays on the line.
  * 
- * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe, Shayan Nostrat, Nick Gï¿½ller, David Rï¿½lleke
  *
  */
+@SuppressWarnings("ALL")
 public class AutonomDriver implements Strategy {
-	private MotorController motor;
-	private WallEColorSensorController colorSensor;
-	private UltrasonicSensorController ultrasonicSensor;
+	private final MotorController motor;
+	private final WallEColorSensorController colorSensor;
+	private final UltrasonicSensorController ultrasonicSensor;
 
-	private FeedbackController controller;
+	private final FeedbackController controller;
 
 	private final int state = RobotState.AUTONOM;		
 
-	private Robot robot;
-
-	private ArrayList<Integer> calValues;
+	private final Robot robot;
 
 	/**
 	 * default constructor of the autonomous driver. Creates a Motor-, UltrasonicSensor-
@@ -44,7 +40,6 @@ public class AutonomDriver implements Strategy {
 		this.ultrasonicSensor = WallEUltrasonicSensorController.getInstance();
 		this.controller = con;
 		this.robot = r;
-		calValues = new ArrayList<>();
 	}
 
 	/*

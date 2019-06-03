@@ -11,7 +11,7 @@ import controller.WallEMotorController;
  */
 public class BackwardCommand implements Command {
 
-	private MotorController controller;
+	private final MotorController controller;
 
 	public BackwardCommand() {
 		controller = WallEMotorController.getInstance();

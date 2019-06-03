@@ -11,7 +11,7 @@ import controller.WallEMotorController;
  */
 public class LeftCommand implements Command {
 
-	private MotorController controller;
+	private final MotorController controller;
 
 	public LeftCommand() {
 		controller = WallEMotorController.getInstance();

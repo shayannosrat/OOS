@@ -9,10 +9,12 @@ import lejos.nxt.NXTRegulatedMotor;
  * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
+@SuppressWarnings("ALL")
 public class WallEMotorController implements MotorController {
 
-	protected final NXTRegulatedMotor left, right;
-	protected static WallEMotorController instance;
+	private final NXTRegulatedMotor left;
+	private final NXTRegulatedMotor right;
+	private static WallEMotorController instance;
 
 	/**
 	 * Constructor using the default motor ports
@@ -59,14 +61,14 @@ public class WallEMotorController implements MotorController {
 			@Override
 			public void run() {
 				left.forward();
-			};
+			}
 		};
 		
 		Thread t2 = new Thread() {
 			@Override
 			public void run() {
 				right.forward();
-			};
+			}
 		};
 		
 		t1.start();
@@ -98,14 +100,14 @@ public class WallEMotorController implements MotorController {
 			@Override
 			public void run() {
 				left.backward();
-			};
+			}
 		};
 		
 		Thread t2 = new Thread() {
 			@Override
 			public void run() {
 				right.backward();
-			};
+			}
 		};
 		
 		t1.start();
@@ -125,30 +127,27 @@ public class WallEMotorController implements MotorController {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.MotorController#startRightTurn()
+	/**
+	 * Performs a right turn
 	 */
-	@Override
-	public void startRightTurn() {
+	private void startRightTurn() {
 		Thread t1 = new Thread() {
 			@Override
 			public void run() {
 				left.forward();
-			};
+			}
 		};
-		
+
 		Thread t2 = new Thread() {
 			@Override
 			public void run() {
 				right.backward();
-			};
+			}
 		};
-		
+
 		t1.start();
 		t2.start();
-		
+
 		try {
 			t1.join();
 		} catch (InterruptedException e) {
@@ -174,14 +173,14 @@ public class WallEMotorController implements MotorController {
 			@Override
 			public void run() {
 				left.stop();
-			};
+			}
 		};
 		
 		Thread t2 = new Thread() {
 			@Override
 			public void run() {
 				right.stop();
-			};
+			}
 		};
 		
 		t1.start();
@@ -221,35 +220,13 @@ public class WallEMotorController implements MotorController {
 		right.setSpeed(speed);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.MotorController#getRightPosition()
+	/**
+	 * Returns the Position of the right Motor
+	 * @return
 	 */
-	@Override
-	public int getRightPosition() {
-		return right.getPosition();
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.MotorController#getLeftPosition()
-	 */
-	@Override
-	public int getLeftPosition() {
+	private int getLeftPosition() {
 		return left.getPosition();
 	}
-//	
-//	@Override
-//	public void rotateRight(int angle) {
-//		right.rotate(angle);
-//	}
-//	
-//	@Override
-//	public void rotateLeft(int angle) {
-//		left.rotate(angle);
-//	}
 	
 	/*
 	 * (non-Javadoc)

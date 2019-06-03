@@ -6,13 +6,13 @@ import lejos.nxt.UltrasonicSensor;
 /**
  * Controls the UltrasonicSensor of WallE
  * 
- * @author Till Kobbe; Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe; Shayan Nostrat, Nick Gï¿½ller, David Rï¿½lleke
  *
  */
 public class WallEUltrasonicSensorController implements UltrasonicSensorController {
-	protected static WallEUltrasonicSensorController instance;
+	private static WallEUltrasonicSensorController instance;
 
-	private UltrasonicSensor usensor;
+	private final UltrasonicSensor usensor;
 
 	/**
 	 * Checks if an instance of WallEUltrasonicSensorController already exists and creates one if not

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package controller;
 
 import lejos.nxt.ColorSensor;
@@ -13,10 +10,10 @@ import lejos.nxt.SensorPort;
  */
 public class WallEColorSensorController implements ColorSensorController {
 
-	protected static WallEColorSensorController instance;
-	protected ColorSensor csensor;
-	protected int setpoint;
-	protected int offset = 0;
+	private static WallEColorSensorController instance;
+	private final ColorSensor csensor;
+	private int setpoint;
+	private int offset = 0;
 
 	/**
 	 * Checks if an instance of WallEColorSensorController already exists and creates one if not
@@ -40,17 +37,6 @@ public class WallEColorSensorController implements ColorSensorController {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see controller.ColorSensorController#onLine()
-	 */
-	@Override
-	public boolean onLine() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see controller.ColorSensorController#getLightValue()
 	 */
 	@Override
@@ -68,7 +54,6 @@ public class WallEColorSensorController implements ColorSensorController {
 	@Override
 	public void setSetpointValue(int value) {
 		this.setpoint = value;
-		return;
 	}
 
 	/*

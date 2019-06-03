@@ -8,7 +8,7 @@ package controller;
  */
 public class PController implements FeedbackController {
 
-	double p;		//The coefficient of the controller
+	private final double p;		//The coefficient of the controller
 
 	public PController(double p) {
 		this.p = p;

@@ -16,11 +16,11 @@ import java.util.List;
  *
  */
 public class WallE implements Robot {
-	private BluetoothReceiver bluetoothReceiver;
+	private final BluetoothReceiver bluetoothReceiver;
 
 	private int state;
 
-	private List<Strategy> strategies = new ArrayList<>();
+	private final List<Strategy> strategies = new ArrayList<>();
 
 	public WallE() {
 		bluetoothReceiver = BluetoothReceiver.getInstance();

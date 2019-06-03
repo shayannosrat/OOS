@@ -3,34 +3,27 @@ package strategy;
 import app.Robot;
 import constants.RobotState;
 import controller.ColorSensorController;
-import controller.FeedbackController;
 import controller.MotorController;
 import controller.UltrasonicSensorController;
 import controller.WallEColorSensorController;
 import controller.WallEMotorController;
 import controller.WallEUltrasonicSensorController;
-import lejos.nxt.Button;
-import lejos.nxt.ColorSensor;
 
 /**
  * Searches the line if it was never found before.
  * the robot drives in a straight line until it detects an object infront of it. It then
- * turns a bit less than 180° around and goes straight on until it detects another object.
+ * turns a bit less than 180ï¿½ around and goes straight on until it detects another object.
  * 
- * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe, Shayan Nostrat, Nick Gï¿½ller, David Rï¿½lleke
  */
 
 public class FindLine implements Strategy {
 
-	private MotorController motor;
-	private ColorSensorController colorSensor;
-	private UltrasonicSensorController ultrasonicSensor;
+	private final MotorController motor;
+	private final ColorSensorController colorSensor;
+	private final UltrasonicSensorController ultrasonicSensor;
 
-	private FeedbackController controller;
-	
-	private final int state = RobotState.FIND_LINE;
-	
-	private Robot robot;
+	private final Robot robot;
 	
 	/**
 	 * default constructor for FindLine. Creates a Motor-, ColorSensor- and UltrasonicSensorController
@@ -52,7 +45,7 @@ public class FindLine implements Strategy {
 
 	@Override
 	public int getState() {
-		return this.state;
+		return RobotState.FIND_LINE;
 	}
 
 	/*

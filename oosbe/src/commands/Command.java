@@ -5,7 +5,7 @@ package commands;
  *
  * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
-public interface Command {
+interface Command {
 
 	/**
 	 * Execute the command

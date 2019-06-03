@@ -11,7 +11,7 @@ import controller.WallEMotorController;
  */
 public class StopCommand implements Command {
 
-	public MotorController controller;
+	private final MotorController controller;
 
 	public StopCommand() {
 		this.controller = WallEMotorController.getInstance();

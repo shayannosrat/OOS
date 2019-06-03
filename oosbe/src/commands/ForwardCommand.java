@@ -11,7 +11,7 @@ import controller.WallEMotorController;
  */
 public class ForwardCommand implements Command {
 
-	private MotorController controller;
+	private final MotorController controller;
 
 	public ForwardCommand() {
 		controller = WallEMotorController.getInstance();

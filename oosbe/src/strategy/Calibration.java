@@ -4,19 +4,17 @@ import app.Robot;
 import calibration.Calibrator;
 import calibration.WallEColorSensorCalibrator;
 import constants.RobotState;
-import lejos.nxt.Button;
 
 /**
  * Calibrates the robot by initializing the ColorSensorController. At the end of the
  * start()-method the RobotState is set to autonomous
  *  
- * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe, Shayan Nostrat, Nick Gï¿½ller, David Rï¿½lleke
  */
 
 public class Calibration implements Strategy {
-	private final int state = RobotState.CALIBRATION;
 
-	private Robot robot;
+	private final Robot robot;
 
 	/**
 	 * default constructor for Calibration 
@@ -51,6 +49,6 @@ public class Calibration implements Strategy {
 
 	@Override
 	public int getState() {
-		return this.state;
+		return RobotState.CALIBRATION;
 	}
 }

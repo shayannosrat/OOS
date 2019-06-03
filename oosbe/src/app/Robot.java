@@ -11,7 +11,7 @@ import strategy.StrategyException;
 public interface Robot {
 	/**
 	 * Set the current state of the robot to select the matching strategy
-	 * @param state  
+	 * @param state The state that the robot should be set in
 	 */
 	void setState(int state);
 
@@ -25,7 +25,7 @@ public interface Robot {
 	/**
 	 * Register a new strategy to the robot
 	 * 
-	 * @param strategy
+	 * @param strategy The strategy that should be added
 	 * @throws StrategyException if a strategy with the same state is already
 	 *                           registered
 	 */
@@ -34,7 +34,7 @@ public interface Robot {
 	/**
 	 * Unregister a strategy by looking for the state number of the given Strategy
 	 * 
-	 * @param strategy
+	 * @param strategy The strategy that should be removed
 	 * @throws StrategyException if the strategy is not found
 	 */
 	Strategy unregisterStrategy(Strategy strategy) throws StrategyException;

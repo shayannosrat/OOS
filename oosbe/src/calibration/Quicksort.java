@@ -9,14 +9,14 @@ import java.util.ArrayList;
  *
  */
 public class Quicksort {
-	private ArrayList<Integer> list;
+	private final ArrayList<Integer> list;
 
 	public Quicksort(ArrayList<Integer> plist) {
 		list = plist;
 		this.sort(0, list.size() - 1);
 	}
 
-	public void sort(int l, int r) {
+	private void sort(int l, int r) {
 		int q;
 		if (l < r) {
 			q = partition(l, r);
@@ -25,7 +25,7 @@ public class Quicksort {
 		}
 	}
 
-	int partition(int l, int r) {
+	private int partition(int l, int r) {
 
 		int i, j, x = list.get((l + r) / 2);
 		i = l - 1;

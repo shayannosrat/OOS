@@ -11,7 +11,7 @@ import controller.WallEMotorController;
  */
 public class RightCommand implements Command {
 
-	private MotorController controller;
+	private final MotorController controller;
 
 	public RightCommand() {
 		controller = WallEMotorController.getInstance();

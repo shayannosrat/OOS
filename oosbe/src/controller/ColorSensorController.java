@@ -6,14 +6,8 @@ package controller;
  * 
  * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
+@SuppressWarnings("ALL")
 public interface ColorSensorController {
-
-	/**
-	 * Checks if the sensor detects the line
-	 * 
-	 * @return The logic value whether the robot is on the line or not
-	 */
-	boolean onLine();
 
 	/**
 	 * Returns the light value from the ColorSensor

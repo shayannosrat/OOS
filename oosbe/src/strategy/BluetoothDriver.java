@@ -9,21 +9,20 @@ import remote.BluetoothReceiver;
 /**
  * The user control class. Controls the robot by the orders given via Bluetooth
  * 
- * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe, Shayan Nostrat, Nick Gï¿½ller, David Rï¿½lleke
  *
  */
 
 public class BluetoothDriver implements Strategy {
-	private final int state = RobotState.BLUETOOTH;
 
-	private Robot robot;
+	private final Robot robot;
 
 	private CommandInvoker invoker;
-	private BluetoothReceiver bluetoothReceiver;
+	private final BluetoothReceiver bluetoothReceiver;
 
 	/**
 	 * sets the CommandInvoker of the BluetoothDriver to the parametrised invoker
-	 * @param invoker 
+	 * @param invoker The Command Invoker
 	 */
 	public void setInvoker(CommandInvoker invoker) {
 		this.invoker = invoker;
@@ -81,6 +80,6 @@ public class BluetoothDriver implements Strategy {
 
 	@Override
 	public int getState() {
-		return this.state;
+		return RobotState.BLUETOOTH;
 	}
 }
