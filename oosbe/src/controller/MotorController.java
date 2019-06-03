@@ -44,4 +44,9 @@ public interface MotorController {
 	 * Turns the robot 180 degrees around its own axis
 	 */
 	void turnAround();
+	
+	/**
+	 * Evades an object in front of the robot
+	 */
+	void evade();
 }

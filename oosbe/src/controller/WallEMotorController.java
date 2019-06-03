@@ -1,5 +1,6 @@
 package controller;
 
+import constants.RobotState;
 import lejos.nxt.Motor;
 import lejos.nxt.NXTRegulatedMotor;
 
@@ -14,6 +15,7 @@ public class WallEMotorController implements MotorController {
 	private final NXTRegulatedMotor left;
 	private final NXTRegulatedMotor right;
 	private static WallEMotorController instance;
+	private final WallEColorSensorController colorSensor;
 
 	/**
 	 * Constructor using the default motor ports
@@ -23,6 +25,7 @@ public class WallEMotorController implements MotorController {
 		right = Motor.C;
 		left.setSpeed(MAX_SPEED);
 		right.setSpeed(MAX_SPEED);
+		this.colorSensor = WallEColorSensorController.getInstance();
 	}
 
 	/**
@@ -36,7 +39,7 @@ public class WallEMotorController implements MotorController {
 		this.right = right;
 		left.setSpeed(MAX_SPEED);
 		right.setSpeed(MAX_SPEED);
-
+		this.colorSensor = WallEColorSensorController.getInstance();
 	}
 	
 	/**
@@ -243,5 +246,43 @@ public class WallEMotorController implements MotorController {
 		this.stop();
 		this.setLeftSpeed(MAX_SPEED);
 		this.setRightSpeed(MAX_SPEED);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.MotorController#evade()
+	 */
+	@Override
+	public void evade() {
+		int value;
+		this.startRightTurn();
+		try {
+			Thread.sleep(400);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		this.stop();
+		this.setRightSpeed(800);
+		this.setLeftSpeed(500);
+		this.startForward();
+		int average = 0;
+		do {
+			for(int i = 0; i < 10; i++) {
+				average += colorSensor.getLightValue();
+			}
+			average /= 10;
+		}while(average > colorSensor.getSetpointValue() + 50);
+		this.stop();
+		this.setRightSpeed(0);
+		this.setLeftSpeed(500);
+		this.startForward();
+		do {
+		
+				value = colorSensor.getLightValue();
+		
+		}while(value > colorSensor.getSetpointValue() + 50 || value < colorSensor.getSetpointValue() - 50);
+		this.stop();
+		
 	}
 }
