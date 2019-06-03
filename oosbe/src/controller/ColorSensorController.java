@@ -6,7 +6,6 @@ package controller;
  * 
  * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  */
-@SuppressWarnings("ALL")
 public interface ColorSensorController {
 
 	/**

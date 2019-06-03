@@ -61,8 +61,8 @@ public class BluetoothReceiver extends RemoteCode {
 				int read = dataIn.read(inBytes, 0, 4);
 
 				if(read != -1) {
-					data = (((inBytes[0] & 0xff) << 24) | ((inBytes[1] & 0xff) << 16) | ((inBytes[2] & 0xff) << 8)
-							| (inBytes[3] & 0xff));
+					data = (((inBytes[0]) << 24) | ((inBytes[1]) << 16) | ((inBytes[2]) << 8)
+							| (inBytes[3]));
 				}
 			}
 		} catch (IOException e) {

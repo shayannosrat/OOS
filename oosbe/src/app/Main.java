@@ -13,6 +13,7 @@ import strategy.BluetoothDriver;
 import strategy.Calibration;
 import strategy.FindLine;
 import strategy.LineLost;
+import strategy.StopStrategy;
 import strategy.StrategyException;
 
 /**
@@ -50,6 +51,7 @@ public class Main {
 		Calibration calibration = new Calibration(wallE);
 		LineLost lost = new LineLost(wallE);
 		FindLine find = new FindLine(wallE);
+		StopStrategy stop = new StopStrategy(wallE);
 
 		bluetoothDriver.setInvoker(invoker);
 
@@ -60,6 +62,7 @@ public class Main {
 			wallE.registerStrategy(calibration);
 			wallE.registerStrategy(lost);
 			wallE.registerStrategy(find);
+			wallE.registerStrategy(stop);
 		} catch (StrategyException e) {
 			System.out.println("Strategies couldn't be registered! " + e.toString());
 			System.exit(1);

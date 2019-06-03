@@ -85,7 +85,6 @@ public class FindLine implements Strategy {
 				motor.turnAround();
 			}
 			motor.stop();
-			
 		}
 	}
 

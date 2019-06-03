@@ -9,7 +9,6 @@ import lejos.nxt.NXTRegulatedMotor;
  * @author Till Kobbe, Shayan Nostrat, David Rölleke, Nick Göller
  *
  */
-@SuppressWarnings("ALL")
 public class WallEMotorController implements MotorController {
 
 	private final NXTRegulatedMotor left;

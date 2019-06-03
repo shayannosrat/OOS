@@ -8,7 +8,7 @@ package controller;
  */
 public interface MotorController {
 
-	int MAX_SPEED = 600;
+	int MAX_SPEED = 500;
 
 	/**
 	 * Starts the motor in the forward direction

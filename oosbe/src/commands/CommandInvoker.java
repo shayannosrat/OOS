@@ -9,10 +9,6 @@ package commands;
 public class CommandInvoker {
 	private Command left, right, forward, backward, stop;
 
-	/*
-	 * Register Methods
-	 */
-
 	/**
 	 * Set the Command executed, when left is called.
 	 * 

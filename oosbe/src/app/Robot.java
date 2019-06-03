@@ -36,6 +36,7 @@ public interface Robot {
 	 * 
 	 * @param strategy The strategy that should be removed
 	 * @throws StrategyException if the strategy is not found
+	 * @return The deleted strategy
 	 */
 	Strategy unregisterStrategy(Strategy strategy) throws StrategyException;
 

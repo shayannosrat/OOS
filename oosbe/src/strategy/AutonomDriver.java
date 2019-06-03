@@ -16,7 +16,6 @@ import strategy.Strategy;
  * @author Till Kobbe, Shayan Nostrat, Nick G�ller, David R�lleke
  *
  */
-@SuppressWarnings("ALL")
 public class AutonomDriver implements Strategy {
 	private final MotorController motor;
 	private final WallEColorSensorController colorSensor;
@@ -69,7 +68,8 @@ public class AutonomDriver implements Strategy {
 		while (robot.getState() == this.state) {
 			if (this.ultrasonicSensor.readData() <= 20) {
 				motor.stop();
-				continue;
+				robot.setState(RobotState.STOP);
+				break;
 			}
 			double output;
 			int setpoint = colorSensor.getSetpointValue();

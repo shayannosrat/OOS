@@ -89,7 +89,6 @@ public class WallE implements Robot {
 	 */
 	@Override
 	public void startStrategies() {
-
 		while (this.state != RobotState.EXIT_PROGRAM) {
 			for (Strategy s : strategies) {
 				if (s.getState() == this.state) {
@@ -99,7 +98,6 @@ public class WallE implements Robot {
 
 			}
 		}
-
 		System.exit(0);
 	}
 }

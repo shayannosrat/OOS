@@ -3,7 +3,7 @@ package strategy;
 /**
  * Interface for the different strategies of the robots
  *
- * @author Till Kobbe, Shayan Nostrat, Nick Göller, David Rölleke
+ * @author Till Kobbe, Shayan Nostrat, Nick Goeller, David Roelleke
  */
 public interface Strategy {
 

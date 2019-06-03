@@ -13,4 +13,5 @@ public abstract class RobotState {
 	public static final int EXIT_PROGRAM = 3;
     public static final int LINE_LOST = 5;
 	public static final int FIND_LINE = 6;
+	public static final int STOP = 7;
 }
